@@ -2,7 +2,7 @@
   <h1>🚀 nextjs-ts-starter</h1>
   <p>Next.js + Tailwind CSS + TypeScript starter packed with useful development features.</p>
   <p>Widely inspired by <a href="https://github.
-com/theodorusclarence/ts-nextjs-tailwind-starter">nextjs-ts-starter
+com/theodorusclarence/ts-nextjs-tailwind-starter">ts-nextjs-tailwind-starter
 </a> by <a href="https://theodorusclarence.com">Theodorus 
 Clarence</a></p>
   
