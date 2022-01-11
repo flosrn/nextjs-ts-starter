@@ -39,6 +39,9 @@ module.exports = {
       'warn',
       {
         groups: [
+          // Packages. `react` related packages come first.
+          ['^react', '^next'],
+          ['^@?\\w', '^react-icons'],
           // ext library & side effect imports
           ['^@?\\w', '^\\u0000'],
           // {s}css files

@@ -1,6 +1,6 @@
-// !STARTERCONF You can delete this page
-import clsx from 'clsx';
-import * as React from 'react';
+import React, { useState } from 'react';
+
+import cx from 'classnames';
 
 import Button from '@/components/buttons/Button';
 import Layout from '@/components/layout/Layout';
@@ -15,8 +15,8 @@ import Seo from '@/components/Seo';
 type Color = typeof colorList[number];
 
 export default function ComponentsPage() {
-  const [mode, setMode] = React.useState<'dark' | 'light'>('light');
-  const [color, setColor] = React.useState<Color>('sky');
+  const [mode, setMode] = useState<'dark' | 'light'>('light');
+  const [color, setColor] = useState<Color>('sky');
   function toggleMode() {
     return mode === 'dark' ? setMode('light') : setMode('dark');
   }
@@ -32,10 +32,10 @@ export default function ComponentsPage() {
 
       <main>
         <section
-          className={clsx(mode === 'dark' ? 'bg-dark' : 'bg-gray-50', color)}
+          className={cx(mode === 'dark' ? 'bg-dark' : 'bg-gray-50', color)}
         >
           <div
-            className={clsx(
+            className={cx(
               'layout py-20 min-h-screen',
               mode === 'dark' ? 'text-white' : 'text-black'
             )}
@@ -58,7 +58,7 @@ export default function ComponentsPage() {
             <ol className='mt-8 space-y-6'>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>Customize Colors</h2>
-                <p className={clsx('!mt-1 text-sm', textColor)}>
+                <p className={cx('!mt-1 text-sm', textColor)}>
                   You can change primary color to any Tailwind CSS colors. See
                   globals.css to change your color.
                 </p>
@@ -67,7 +67,7 @@ export default function ComponentsPage() {
                     name='color'
                     id='color'
                     value={color}
-                    className={clsx(
+                    className={cx(
                       'block max-w-xs rounded',
                       mode === 'dark'
                         ? 'bg-dark border border-gray-600'
@@ -121,7 +121,7 @@ export default function ComponentsPage() {
               </li>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>UnstyledLink</h2>
-                <p className={clsx('!mt-1 text-sm', textColor)}>
+                <p className={cx('!mt-1 text-sm', textColor)}>
                   No style applied, differentiate internal and outside links,
                   give custom cursor for outside links.
                 </p>
@@ -134,7 +134,7 @@ export default function ComponentsPage() {
               </li>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>PrimaryLink</h2>
-                <p className={clsx('!mt-1 text-sm', textColor)}>
+                <p className={cx('!mt-1 text-sm', textColor)}>
                   Add styling on top of UnstyledLink, giving a primary color to
                   the link.
                 </p>
@@ -147,7 +147,7 @@ export default function ComponentsPage() {
               </li>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>UnderlineLink</h2>
-                <p className={clsx('!mt-1 text-sm', textColor)}>
+                <p className={cx('!mt-1 text-sm', textColor)}>
                   Add styling on top of UnstyledLink, giving a dotted and
                   animated underline.
                 </p>
@@ -160,7 +160,7 @@ export default function ComponentsPage() {
               </li>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>ArrowLink</h2>
-                <p className={clsx('!mt-1 text-sm', textColor)}>
+                <p className={cx('!mt-1 text-sm', textColor)}>
                   Useful for indicating navigation, I use this quite a lot, so
                   why not build a component with some whimsy touch?
                 </p>
@@ -188,14 +188,11 @@ export default function ComponentsPage() {
               </li>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>ButtonLink</h2>
-                <p className={clsx('!mt-1 text-sm', textColor)}>
+                <p className={cx('!mt-1 text-sm', textColor)}>
                   Button styled link with 3 variants.
                 </p>
                 <div className='flex flex-wrap gap-2'>
-                  <ButtonLink
-                    variant='primary'
-                    href='https://flosrn.com'
-                  >
+                  <ButtonLink variant='primary' href='https://flosrn.com'>
                     Primary Variant
                   </ButtonLink>
                   <ButtonLink
@@ -212,23 +209,17 @@ export default function ComponentsPage() {
                   >
                     Ghost Variant
                   </ButtonLink>
-                  <ButtonLink
-                    variant='dark'
-                    href='https://flosrn.com'
-                  >
+                  <ButtonLink variant='dark' href='https://flosrn.com'>
                     Dark Variant
                   </ButtonLink>
-                  <ButtonLink
-                    variant='light'
-                    href='https://flosrn.com'
-                  >
+                  <ButtonLink variant='light' href='https://flosrn.com'>
                     Light Variant
                   </ButtonLink>
                 </div>
               </li>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>Button</h2>
-                <p className={clsx('!mt-1 text-sm', textColor)}>
+                <p className={cx('!mt-1 text-sm', textColor)}>
                   Ordinary button with style.
                 </p>
                 <div className='flex flex-wrap gap-2'>
@@ -283,7 +274,7 @@ export default function ComponentsPage() {
               </li>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>Custom 404 Page</h2>
-                <p className={clsx('!mt-1 text-sm', textColor)}>
+                <p className={cx('!mt-1 text-sm', textColor)}>
                   Styled 404 page with some animation.
                 </p>
                 <div className='flex flex-wrap gap-2'>
@@ -292,7 +283,7 @@ export default function ComponentsPage() {
               </li>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>Next Image</h2>
-                <p className={clsx('!mt-1 text-sm', textColor)}>
+                <p className={cx('!mt-1 text-sm', textColor)}>
                   Next Image with default props and skeleton animation
                 </p>
                 <NextImage

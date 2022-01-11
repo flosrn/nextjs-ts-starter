@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cx from 'classnames';
 
 import UnstyledLink, {
   UnstyledLinkProps,
@@ -12,7 +12,7 @@ const PrimaryLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
       <UnstyledLink
         ref={ref}
         {...rest}
-        className={clsxm(
+        className={cx(
           'inline-flex items-center',
           'font-medium text-primary-600 hover:text-primary-500',
           'focus:outline-none focus-visible:rounded focus-visible:ring focus-visible:ring-primary-500 focus-visible:ring-offset-2',
