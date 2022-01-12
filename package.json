@@ -15,11 +15,11 @@
     "format": "prettier -w .",
     "format:check": "prettier -c .",
     "upgrade-all": "yarn upgrade --latest",
-    "commit": "cz",
     "prepare": "husky install",
     "postbuild": "next-sitemap",
     "release": "standard-version",
-    "push-release": "git push --follow-tags origin main"
+    "commit": "git add -A && yarn cz",
+    "push-release": "git push --follow-tags origin master"
   },
   "dependencies": {
     "classnames": "^2.3.1",
