@@ -77,7 +77,7 @@ function ComponentsPage() {
                     value={accentColor}
                     selectHandler={handleAccentColor}
                   />
-                  <ButtonLink href='https://github.com/flosrn/nextjs-ts-starter/blob/main/src/styles/colors.css'>
+                  <ButtonLink href='https://github.com/flosrn/nextjs-ts-starter/blob/master/src/styles/colors.css'>
                     Check list of colors
                   </ButtonLink>
                 </div>
