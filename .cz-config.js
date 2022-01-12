@@ -17,7 +17,7 @@ module.exports = {
     },
     {
       value: ':recycle: refactor',
-      name: '♻️ refactor:\tCode change that neither fixes a bug nor adds a feature.',
+      name: '♻️  refactor:\tCode change that neither fixes a bug nor adds a feature.',
     },
     {
       value: ':ambulance: hotfix',
@@ -45,7 +45,7 @@ module.exports = {
     },
     {
       value: ':pencil2: typo',
-      name: '✏️ typo:\tFix typo.',
+      name: '✏️  typo:\tFix typo.',
     },
     {
       value: ':clown_face: mocks',
