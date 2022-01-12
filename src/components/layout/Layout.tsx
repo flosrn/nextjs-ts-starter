@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Put Header or Footer Here
-  return <>{children}</>;
-}
+  return <div className='bg-tw-background text-tw-primary'>{children}</div>;
+};
+
+export default Layout;

@@ -6,7 +6,7 @@ import Layout from '@/components/layout/Layout';
 import ArrowLink from '@/components/links/ArrowLink';
 import Seo from '@/components/Seo';
 
-export default function NotFoundPage() {
+function NotFoundPage() {
   return (
     <Layout>
       <Seo templateTitle='Not Found' />
@@ -28,3 +28,5 @@ export default function NotFoundPage() {
     </Layout>
   );
 }
+
+export default NotFoundPage;

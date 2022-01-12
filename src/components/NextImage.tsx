@@ -20,7 +20,7 @@ type NextImageProps = {
  * @description Must set width using `w-` className
  * @param useSkeleton add background with pulse animation, don't use it if image is transparent
  */
-export default function NextImage({
+const NextImage: React.FC<NextImageProps> = ({
   useSkeleton = false,
   src,
   width,
@@ -30,7 +30,7 @@ export default function NextImage({
   imgClassName,
   blurClassName,
   ...rest
-}: NextImageProps) {
+}) => {
   const [status, setStatus] = useState(useSkeleton ? 'loading' : 'complete');
   const widthIsSet = className?.includes('w-') ?? false;
 
@@ -54,4 +54,6 @@ export default function NextImage({
       />
     </figure>
   );
-}
+};
+
+export default NextImage;

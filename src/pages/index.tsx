@@ -20,24 +20,24 @@ import Vercel from '~/svg/Vercel.svg';
 // Before you begin editing, follow all comments with `STARTERCONF`,
 // to customize the default configuration.
 
-export default function HomePage() {
+function HomePage() {
   return (
     <Layout>
       {/* <Seo templateTitle='Home' /> */}
       <Seo />
 
       <main>
-        <section className='bg-white'>
+        <section>
           <div className='layout flex flex-col justify-center items-center min-h-screen text-center'>
             <Vercel className='text-5xl' />
             <h1 className='mt-4'>
               Next.js + Tailwind CSS + TypeScript Starter
             </h1>
-            <p className='mt-2 text-sm text-gray-800'>
+            <p className='text-tw-primary-dark mt-2 text-sm'>
               A starter for Next.js, Tailwind CSS, and TypeScript with Absolute
               Import, Seo, Link component, pre-configured with Husky{' '}
             </p>
-            <p className='mt-2 text-sm text-gray-700'>
+            <p className='text-tw-primary-medium mt-2 text-sm'>
               <ArrowLink href='https://github.com/flosrn/nextjs-ts-starter'>
                 See the repository
               </ArrowLink>
@@ -60,10 +60,10 @@ export default function HomePage() {
               />
             </UnstyledLink>
 
-            <footer className='absolute bottom-2 text-gray-700'>
+            <footer className='absolute bottom-2'>
               © {new Date().getFullYear()} By{' '}
-              <UnderlineLink href='https://flosrn.com?ref=tsnextstarter'>
-                Theodorus Clarence
+              <UnderlineLink href='https://flosrn.com?ref=next-ts-starter'>
+                Flosrn
               </UnderlineLink>
             </footer>
           </div>
@@ -72,3 +72,5 @@ export default function HomePage() {
     </Layout>
   );
 }
+
+export default HomePage;

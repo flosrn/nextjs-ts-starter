@@ -7,7 +7,7 @@ const links = [
   { href: '/', label: 'Route 2' },
 ];
 
-export default function Header() {
+const Header: React.FC = () => {
   return (
     <header className='sticky top-0 z-50 bg-white'>
       <div className='layout flex justify-between items-center h-14'>
@@ -28,4 +28,6 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;

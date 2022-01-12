@@ -7,8 +7,8 @@ export type UnstyledLinkProps = {
   href: string;
   children: React.ReactNode;
   openNewTab?: boolean;
-  className?: string;
   nextLinkProps?: Omit<LinkProps, 'href'>;
+  className?: string;
 } & React.ComponentPropsWithRef<'a'>;
 
 const UnstyledLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(

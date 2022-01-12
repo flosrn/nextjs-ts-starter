@@ -13,12 +13,20 @@ function withOpacity(variableName) {
 /** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
         primary: ['Inter', ...fontFamily.sans],
       },
       colors: {
+        'tw-background': 'var(--background)',
+        'tw-background-secondary': 'var(--background-secondary)',
+        'tw-primary': 'var(--primary)',
+        'tw-primary-light': 'var(--primary-light)',
+        'tw-primary-medium': 'var(--primary-medium)',
+        'tw-primary-dark': 'var(--primary-dark)',
+        'tw-secondary': 'var(--secondary)',
         primary: {
           // Customize it on globals.css :root
           50: withOpacity('--tw-clr-primary-50'),
@@ -52,5 +60,6 @@ module.exports = {
       },
     },
   },
+  variants: {},
   plugins: [require('@tailwindcss/forms')],
 };

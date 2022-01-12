@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 import cx from 'classnames';
 
 import Button from '@/components/buttons/Button';
+import SwitchThemeButton from '@/components/buttons/SwitchThemeButton';
 import Layout from '@/components/layout/Layout';
 import ArrowLink from '@/components/links/ArrowLink';
 import ButtonLink from '@/components/links/ButtonLink';
@@ -10,16 +12,29 @@ import PrimaryLink from '@/components/links/PrimaryLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
+import Select from '@/components/select/Select';
 import Seo from '@/components/Seo';
 
-type Color = typeof colorList[number];
+function ComponentsPage() {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-export default function ComponentsPage() {
-  const [mode, setMode] = useState<'dark' | 'light'>('light');
-  const [color, setColor] = useState<Color>('sky');
-  function toggleMode() {
-    return mode === 'dark' ? setMode('light') : setMode('dark');
-  }
+  const mode = theme?.split(' ')[0] || theme;
+  const accentColor = theme?.split(' ')[1] || 'blue';
+  const isDarkMode = mode === 'dark';
+
+  // When mounted on client, now we can show the UI
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
+  const handleTheme = () => {
+    setTheme(isDarkMode ? `light ${accentColor}` : `dark ${accentColor}`);
+  };
+
+  const handleAccentColor = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setTheme(`${mode} ${event.target.value as typeof colorList[number]}`);
+  };
 
   const textColor = mode === 'dark' ? 'text-gray-300' : 'text-gray-600';
 
@@ -31,15 +46,8 @@ export default function ComponentsPage() {
       />
 
       <main>
-        <section
-          className={cx(mode === 'dark' ? 'bg-dark' : 'bg-gray-50', color)}
-        >
-          <div
-            className={cx(
-              'layout py-20 min-h-screen',
-              mode === 'dark' ? 'text-white' : 'text-black'
-            )}
-          >
+        <section>
+          <div className='layout py-20 min-h-screen'>
             <h1>Built-in Components</h1>
             <ArrowLink direction='left' className='mt-2' href='/'>
               Back to Home
@@ -47,41 +55,28 @@ export default function ComponentsPage() {
 
             <div className='flex flex-wrap gap-2 mt-8'>
               <Button
-                onClick={toggleMode}
-                variant={mode === 'dark' ? 'light' : 'dark'}
+                onClick={handleTheme}
+                variant={isDarkMode ? 'light' : 'dark'}
+                className='!py-0'
               >
-                Set to {mode === 'dark' ? 'light' : 'dark'}
+                Set to {isDarkMode ? 'light' : 'dark'}
+                <SwitchThemeButton mode={mode} themeHandler={handleTheme} />
               </Button>
-              {/* <Button onClick={randomize}>Randomize CSS Variable</Button> */}
             </div>
 
             <ol className='mt-8 space-y-6'>
               <li className='space-y-2'>
                 <h2 className='text-lg md:text-xl'>Customize Colors</h2>
-                <p className={cx('!mt-1 text-sm', textColor)}>
+                <p className='!mt-1 text-sm'>
                   You can change primary color to any Tailwind CSS colors. See
                   globals.css to change your color.
                 </p>
                 <div className='flex flex-wrap gap-2'>
-                  <select
-                    name='color'
-                    id='color'
-                    value={color}
-                    className={cx(
-                      'block max-w-xs rounded',
-                      mode === 'dark'
-                        ? 'bg-dark border border-gray-600'
-                        : 'bg-white border-gray-300',
-                      'focus:border-primary-400 focus:ring focus:ring-primary-400 focus:outline-none'
-                    )}
-                    onChange={(e) => setColor(e.target.value as Color)}
-                  >
-                    {colorList.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
+                  <Select
+                    itemsList={colorList}
+                    value={accentColor}
+                    selectHandler={handleAccentColor}
+                  />
                   <ButtonLink href='https://github.com/flosrn/nextjs-ts-starter/blob/main/src/styles/colors.css'>
                     Check list of colors
                   </ButtonLink>
@@ -303,6 +298,8 @@ export default function ComponentsPage() {
   );
 }
 
+export default ComponentsPage;
+
 const colorList = [
   'rose',
   'pink',
@@ -326,4 +323,4 @@ const colorList = [
   'zinc',
   'neutral',
   'stone',
-] as const;
+];

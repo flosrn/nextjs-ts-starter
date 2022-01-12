@@ -5,6 +5,13 @@
 :root {
   /* #region  /**=========== Primary Color =========== */
   /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
+  --background: theme('colors.white');
+  --background-secondary: theme('colors.gray.200');
+  --primary: theme('colors.black');
+  --primary-light: theme('colors.gray.500');
+  --primary-medium: theme('colors.gray.700');
+  --primary-dark: theme('colors.gray.900');
+  --secondary: theme('colors.black');
   --tw-clr-primary-50: 240, 249, 255;
   --tw-clr-primary-100: 224, 242, 254;
   --tw-clr-primary-200: 186, 230, 253;
@@ -26,6 +33,16 @@
   --clr-primary-800: rgb(var(--tw-clr-primary-800)); /* #075985 */
   --clr-primary-900: rgb(var(--tw-clr-primary-900)); /* #0c4a6e */
   /* #endregion  /**======== Primary Color =========== */
+}
+
+[data-theme*='dark'] {
+  --background: theme('colors.black');
+  --background-secondary: theme('colors.gray.800');
+  --primary: theme('colors.white');
+  --primary-light: theme('colors.gray.100');
+  --primary-medium: theme('colors.gray.200');
+  --primary-dark: theme('colors.gray.300');
+  --secondary: theme('colors.black');
 }
 
 @layer base {

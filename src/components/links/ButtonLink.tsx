@@ -21,7 +21,7 @@ type ButtonLinkProps = {
 
 const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   (
-    { children, className, variant = 'primary', isDarkBg = false, ...rest },
+    { children, variant = 'primary', isDarkBg = false, className, ...rest },
     ref
   ) => {
     return (

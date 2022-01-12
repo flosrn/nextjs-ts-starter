@@ -21,11 +21,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      className,
       disabled: buttonDisabled,
       isLoading,
       variant = 'primary',
       isDarkBg = false,
+      className,
       ...rest
     },
     ref

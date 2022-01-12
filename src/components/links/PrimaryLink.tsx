@@ -7,7 +7,7 @@ import UnstyledLink, {
 } from '@/components/links/UnstyledLink';
 
 const PrimaryLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
-  ({ className, children, ...rest }, ref) => {
+  ({ children, className, ...rest }, ref) => {
     return (
       <UnstyledLink
         ref={ref}

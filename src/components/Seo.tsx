@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -22,7 +23,7 @@ type SeoProps = {
   templateTitle?: string;
 } & Partial<typeof defaultMeta>;
 
-export default function Seo(props: SeoProps) {
+const Seo: React.FC<SeoProps> = (props) => {
   const router = useRouter();
   const meta = {
     ...defaultMeta,
@@ -87,7 +88,9 @@ export default function Seo(props: SeoProps) {
       <meta name='theme-color' content='#ffffff' />
     </Head>
   );
-}
+};
+
+export default Seo;
 
 type Favicons = {
   rel: string;
