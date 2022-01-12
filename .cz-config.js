@@ -12,7 +12,7 @@ module.exports = {
       name: '💫 anims:\tAdd or update animations and transitions.',
     },
     {
-      value: ':art: feat',
+      value: ':art: cosmetic',
       name: '🎨 cosmetic:\tImproving structure/format of the code.',
     },
     {
@@ -44,7 +44,7 @@ module.exports = {
       name: '🔎 seo:\tImprove SEO.',
     },
     {
-      value: ':pencil: typo',
+      value: ':pencil2: typo',
       name: '✏️ typo:\tFix typo.',
     },
     {
