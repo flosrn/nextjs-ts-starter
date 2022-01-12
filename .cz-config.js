@@ -52,7 +52,7 @@ module.exports = {
       name: '🤡 mocks:\tMocks things.',
     },
     {
-      value: ':speech_baloon: text',
+      value: ':speech_balloon: text',
       name: '💬 text:\tAdd or update text and literals.',
     },
     {

@@ -11,7 +11,7 @@ const defaultMeta = {
   description:
     'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
   /** Without additional '/' on the end, e.g. https://flosrn.com */
-  url: 'https://tsnext-tw.thcl.dev',
+  url: 'https://nextjs-ts-starter-flosrn.vercel.app',
   type: 'website',
   robots: 'follow, index',
   /** No need to be filled, will be populated with openGraph function */

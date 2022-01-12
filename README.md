@@ -25,7 +25,7 @@ This repository is 🔋 battery packed with:
 - ⚛️ React 17
 - ✨ TypeScript
 - 💨 Tailwind CSS 3 — Configured with CSS Variables to extend the **primary** color
-- 💎 Pre-built Components — Components that will **automatically adapt** with your brand color, [check here for the demo](https://tsnext-tw.thcl.dev/components)
+- 💎 Pre-built Components — Components that will **automatically adapt** with your brand color, [check here for the demo](https://nextjs-ts-starter-flosrn.vercel.app/components)
 - 🃏 Jest — Configured for unit testing
 - 📈 Absolute Import and Path Alias — Import components using `@/` prefix
 - 📏 ESLint — Find and fix problems in your code, also will **auto sort** your imports
