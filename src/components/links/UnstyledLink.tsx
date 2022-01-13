@@ -31,8 +31,8 @@ const UnstyledLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
     return (
       <a
         ref={ref}
-        target='_blank'
-        rel='noopener noreferrer'
+        target="_blank"
+        rel="noopener noreferrer"
         href={href}
         {...rest}
         className={cx('cursor-newtab', className)}

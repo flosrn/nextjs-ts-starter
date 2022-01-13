@@ -11,8 +11,8 @@ type SelectProps = {
 const Select: React.FC<SelectProps> = ({ itemsList, value, selectHandler }) => {
   return (
     <select
-      name='color'
-      id='color'
+      name="color"
+      id="color"
       value={value}
       className={cx(
         'text-tw-secondary block max-w-xs rounded',

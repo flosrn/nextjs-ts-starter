@@ -9,16 +9,16 @@ const links = [
 
 const Header: React.FC = () => {
   return (
-    <header className='sticky top-0 z-50 bg-white'>
-      <div className='layout flex justify-between items-center h-14'>
-        <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
+    <header className="sticky top-0 z-50 bg-white">
+      <div className="layout flex justify-between items-center h-14">
+        <UnstyledLink href="/" className="font-bold hover:text-gray-600">
           Home
         </UnstyledLink>
         <nav>
-          <ul className='flex justify-between items-center space-x-4'>
+          <ul className="flex justify-between items-center space-x-4">
             {links.map(({ href, label }) => (
               <li key={`${href}${label}`}>
-                <UnstyledLink href={href} className='hover:text-gray-600'>
+                <UnstyledLink href={href} className="hover:text-gray-600">
                   {label}
                 </UnstyledLink>
               </li>

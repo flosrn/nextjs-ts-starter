@@ -42,7 +42,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        type='button'
+        type="button"
         disabled={disabled}
         className={cx(
           'inline-flex items-center px-4 py-2 font-semibold rounded',
@@ -103,7 +103,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               }
             )}
           >
-            <ImSpinner2 className='animate-spin' />
+            <ImSpinner2 className="animate-spin" />
           </div>
         )}
         {children}

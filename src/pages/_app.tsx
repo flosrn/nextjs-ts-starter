@@ -9,7 +9,7 @@ import Layout from '@/components/layout/Layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider defaultTheme='light' attribute='data-theme'>
+    <ThemeProvider defaultTheme="light" attribute="data-theme">
       <Layout>
         <Component {...pageProps} />
       </Layout>

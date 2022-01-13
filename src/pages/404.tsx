@@ -9,17 +9,17 @@ import Seo from '@/components/Seo';
 function NotFoundPage() {
   return (
     <Layout>
-      <Seo templateTitle='Not Found' />
+      <Seo templateTitle="Not Found" />
 
       <main>
-        <section className='bg-white'>
-          <div className='layout flex flex-col justify-center items-center min-h-screen text-center text-black'>
+        <section className="bg-white">
+          <div className="layout flex flex-col justify-center items-center min-h-screen text-center text-black">
             <RiAlarmWarningFill
               size={60}
-              className='animate-flicker drop-shadow-glow text-red-500'
+              className="animate-flicker drop-shadow-glow text-red-500"
             />
-            <h1 className='mt-8 text-4xl md:text-6xl'>Page Not Found</h1>
-            <ArrowLink className='mt-4 md:text-lg' href='/'>
+            <h1 className="mt-8 text-4xl md:text-6xl">Page Not Found</h1>
+            <ArrowLink className="mt-4 md:text-lg" href="/">
               Back to Home
             </ArrowLink>
           </div>

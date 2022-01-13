@@ -49,7 +49,7 @@ const NextImage: React.FC<NextImageProps> = ({
         height={height}
         alt={alt}
         onLoadingComplete={() => setStatus('complete')}
-        layout='responsive'
+        layout="responsive"
         {...rest}
       />
     </figure>
