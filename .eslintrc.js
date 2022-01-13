@@ -15,11 +15,17 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
     'no-console': 'warn',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-
     'react/display-name': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-param-reassign': 'off',
+    // Next.js use his own internal link system
+    'jsx-a11y/anchor-is-valid': 'off',
+    // _app.tsx uses spread operator and also, react-hook-form
+    'react/jsx-props-no-spreading': 'off',
+    // _document.tsx use render method without `this` keyword
+    'class-methods-use-this': 'off',
 
-    //#region  //*=========== Unused Import ===========
+    // #region  //*=========== Unused Import ===========
     '@typescript-eslint/no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': [
@@ -31,9 +37,9 @@ module.exports = {
         argsIgnorePattern: '^_',
       },
     ],
-    //#endregion  //*======== Unused Import ===========
+    // #endregion  //*======== Unused Import ===========
 
-    //#region  //*=========== Import Sort ===========
+    // #region  //*=========== Import Sort ===========
     'simple-import-sort/exports': 'warn',
     'simple-import-sort/imports': [
       'warn',
@@ -74,7 +80,7 @@ module.exports = {
         ],
       },
     ],
-    //#endregion  //*======== Import Sort ===========
+    // #endregion  //*======== Import Sort ===========
   },
   globals: {
     React: true,
