@@ -12,19 +12,26 @@ enum ButtonVariant {
 }
 
 type ButtonProps = {
+  /** Button children element */
+  children: React.ReactNode;
+  /** Show loading spinner and disable button */
   isLoading?: boolean;
-  isDarkBg?: boolean;
+  /** Button color variant */
   variant?: keyof typeof ButtonVariant;
+  /** Button dark or light variant */
+  isDarkBg?: boolean;
+  /** Disable the button and add not-allowed cursor */
+  disabled?: boolean;
 } & React.ComponentPropsWithRef<'button'>;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      disabled: buttonDisabled,
       isLoading,
       variant = 'primary',
       isDarkBg = false,
+      disabled: buttonDisabled,
       className,
       ...rest
     },
