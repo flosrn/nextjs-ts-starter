@@ -26,18 +26,18 @@ select choice in "${packages[@]}"; do
   case $choice in
   "Storybook")
     curl -s $SB | bash -s
+    exit
     ;;
   "React Hook Form")
     curl -s $RHF | bash -s
+    exit
     ;;
   "Cypress")
     curl -s $CP | bash -s
+    exit
     ;;
   "SWR")
     curl -s $SWR | bash -s
-    ;;
-  "Done")
-    echo "Your package is perfectly installed 🔥"
     exit
     ;;
   *)
