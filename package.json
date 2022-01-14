@@ -1,7 +1,7 @@
 {
   "name": "nextjs-ts-starter",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,12 +14,13 @@
     "test": "jest",
     "format": "prettier -w .",
     "format:check": "prettier -c .",
-    "upgrade-all": "yarn upgrade --latest",
     "prepare": "husky install",
     "postbuild": "next-sitemap",
     "release": "standard-version",
-    "commit": "git add -A && yarn cz",
-    "push-release": "git push --follow-tags origin master"
+    "packages:upgrade": "yarn upgrade-interactive --latest",
+    "git:commit": "git add -A && yarn cz",
+    "git:push": "git push --follow-tags origin master",
+    "expansion-pack:add": "./expansion-pack.sh"
   },
   "dependencies": {
     "classnames": "^2.3.1",
