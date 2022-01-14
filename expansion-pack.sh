@@ -20,39 +20,30 @@ echo -e "${GREEN}"
 echo 'Choose package you want to install: '
 echo -e "${NC}"
 
-packages=("Storybook" "React Hook Form" "Cypress" "SWR" "Quit")
+packages=("Storybook" "React Hook Form" "Cypress" "SWR")
 
-select fav in "${packages[@]}"; do
-  case $fav in
+select choice in "${packages[@]}"; do
+  case $choice in
   "Storybook")
-    echo -e ""
-    echo "$fav installation..."
-    echo -e ""
+    curl -s $SB | bash -s
     ;;
   "React Hook Form")
-    echo -e ""
-    echo "$fav installation..."
-    echo -e ""
+    curl -s $RHF | bash -s
     ;;
   "Cypress")
-    echo -e ""
-    echo "$fav installation..."
-    echo -e ""
+    curl -s $CP | bash -s
     ;;
- "SWR")
-    echo -e ""
-    echo "$fav installation..."
-    echo -e ""
+  "SWR")
+    curl -s $SWR | bash -s
     ;;
-  "Quit")
-    echo "User requested exit"
+  "Done")
+    echo "Your package is perfectly installed 🔥"
     exit
     ;;
   *)
     echo -e "${RED}"
     echo "Invalid option $REPLY"
-    echo -e "${NC}" ;;
+    echo -e "${NC}"
+    ;;
   esac
 done
-
-#curl -s $STORYBOOK | bash -s
