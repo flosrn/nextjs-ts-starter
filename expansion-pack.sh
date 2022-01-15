@@ -17,7 +17,7 @@ echo "==========================="
 echo -e "${NC}"
 
 echo -e "${GREEN}"
-echo 'Choose package you want to install: '
+echo "Choose the package you want to install: : "
 echo -e "${NC}"
 
 packages=("Storybook" "React Hook Form" "Cypress" "SWR")
