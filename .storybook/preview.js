@@ -3,6 +3,7 @@ import NextImage from 'next/image';
 
 import '../src/styles/globals.css';
 import '../src/styles/colors.css';
+import cx from 'classnames';
 
 const OriginalNextImage = NextImage.default;
 
@@ -30,9 +31,16 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => (
-    <div className='bg-tw-background text-tw-primary p-3 h-screen'>
-      <Story />
-    </div>
-  ),
+  (Story, context) => {
+    const isCentered = context.parameters.isCentered;
+    return (
+      <div
+        className={cx('bg-tw-background text-tw-primary p-3 h-screen', {
+          'flex justify-center items-center': isCentered,
+        })}
+      >
+        <Story />
+      </div>
+    );
+  },
 ];
