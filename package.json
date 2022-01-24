@@ -28,6 +28,7 @@
     "storybook:generate": "yarn plop"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.3",
     "@heroicons/react": "^1.0.5",
     "classnames": "^2.3.1",
     "next": "^12.0.8",
