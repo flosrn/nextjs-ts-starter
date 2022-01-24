@@ -49,7 +49,8 @@ This repository is 🔋 battery packed with:
    ```bash
    npx create-next-app -e https://github.com/flosrn/nextjs-ts-starter project-name
    ```
-or
+
+   or
 
 2. Deploy to Vercel
 

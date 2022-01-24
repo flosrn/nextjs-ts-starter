@@ -28,16 +28,16 @@ function HomePage() {
 
       <main>
         <section>
-          <div className="layout flex flex-col justify-center items-center min-h-screen text-center">
+          <div className="layout flex min-h-screen flex-col items-center justify-center text-center">
             <Vercel className="text-5xl" />
             <h1 className="mt-4">
               Next.js + Tailwind CSS + TypeScript Starter
             </h1>
-            <p className="text-tw-primary-dark mt-2 text-sm">
+            <p className="mt-2 text-sm text-tw-primary-dark">
               A starter for Next.js, Tailwind CSS, and TypeScript with Absolute
               Import, Seo, Link component, pre-configured with Husky{' '}
             </p>
-            <p className="text-tw-primary-medium mt-2 text-sm">
+            <p className="mt-2 text-sm text-tw-primary-medium">
               <ArrowLink href="https://github.com/flosrn/nextjs-ts-starter">
                 See the repository
               </ArrowLink>
