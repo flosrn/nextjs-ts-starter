@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { AdminPortal, useAuthUser } from '@frontegg/nextjs';
+
 import Layout from '@/components/layout/Layout';
 import ArrowLink from '@/components/links/ArrowLink';
 import ButtonLink from '@/components/links/ButtonLink';
@@ -21,6 +23,9 @@ import Vercel from '~/svg/Vercel.svg';
 // to customize the default configuration.
 
 function HomePage() {
+  const user = useAuthUser();
+  // eslint-disable-next-line no-console
+  console.log('user : ', user);
   return (
     <Layout>
       {/* <Seo templateTitle='Home' /> */}
@@ -59,6 +64,10 @@ function HomePage() {
                 alt="Deploy with Vercel"
               />
             </UnstyledLink>
+
+            <button onClick={() => AdminPortal.show()}>
+              Open Admin Portal
+            </button>
 
             <footer className="absolute bottom-2">
               © {new Date().getFullYear()} By{' '}
