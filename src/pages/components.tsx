@@ -43,13 +43,13 @@ function ComponentsPage() {
 
       <main>
         <section>
-          <div className="layout py-20 min-h-screen">
+          <div className="layout min-h-screen py-20">
             <h1>Built-in Components</h1>
             <ArrowLink direction="left" className="mt-2" href="/">
               Back to Home
             </ArrowLink>
 
-            <div className="flex flex-wrap gap-2 mt-8">
+            <div className="mt-8 flex flex-wrap gap-2">
               <Button
                 onClick={handleTheme}
                 variant={isDarkMode ? 'light' : 'dark'}
@@ -78,34 +78,34 @@ function ComponentsPage() {
                   </ButtonLink>
                 </div>
                 <div className="flex flex-wrap gap-2 text-xs font-medium">
-                  <div className="flex justify-center items-center w-10 h-10 text-black bg-primary-50 rounded">
+                  <div className="flex h-10 w-10 items-center justify-center rounded bg-primary-50 text-black">
                     50
                   </div>
-                  <div className="flex justify-center items-center w-10 h-10 text-black bg-primary-100 rounded">
+                  <div className="flex h-10 w-10 items-center justify-center rounded bg-primary-100 text-black">
                     100
                   </div>
-                  <div className="flex justify-center items-center w-10 h-10 text-black bg-primary-200 rounded">
+                  <div className="flex h-10 w-10 items-center justify-center rounded bg-primary-200 text-black">
                     200
                   </div>
-                  <div className="flex justify-center items-center w-10 h-10 text-black bg-primary-300 rounded">
+                  <div className="flex h-10 w-10 items-center justify-center rounded bg-primary-300 text-black">
                     300
                   </div>
-                  <div className="flex justify-center items-center w-10 h-10 text-black bg-primary-400 rounded">
+                  <div className="flex h-10 w-10 items-center justify-center rounded bg-primary-400 text-black">
                     400
                   </div>
-                  <div className="flex justify-center items-center w-10 h-10 text-black bg-primary-500 rounded">
+                  <div className="flex h-10 w-10 items-center justify-center rounded bg-primary-500 text-black">
                     500
                   </div>
-                  <div className="flex justify-center items-center w-10 h-10 text-white bg-primary-600 rounded">
+                  <div className="flex h-10 w-10 items-center justify-center rounded bg-primary-600 text-white">
                     600
                   </div>
-                  <div className="flex justify-center items-center w-10 h-10 text-white bg-primary-700 rounded">
+                  <div className="flex h-10 w-10 items-center justify-center rounded bg-primary-700 text-white">
                     700
                   </div>
-                  <div className="flex justify-center items-center w-10 h-10 text-white bg-primary-800 rounded">
+                  <div className="flex h-10 w-10 items-center justify-center rounded bg-primary-800 text-white">
                     800
                   </div>
-                  <div className="flex justify-center items-center w-10 h-10 text-white bg-primary-900 rounded">
+                  <div className="flex h-10 w-10 items-center justify-center rounded bg-primary-900 text-white">
                     900
                   </div>
                 </div>
@@ -155,7 +155,7 @@ function ComponentsPage() {
                   Useful for indicating navigation, I use this quite a lot, so
                   why not build a component with some whimsy touch?
                 </p>
-                <div className="flex flex-wrap gap-4 items-center">
+                <div className="flex flex-wrap items-center gap-4">
                   <ArrowLink href="/" direction="left">
                     Direction Left
                   </ArrowLink>

@@ -15,8 +15,8 @@ const Select: React.FC<SelectProps> = ({ itemsList, value, selectHandler }) => {
       id="color"
       value={value}
       className={cx(
-        'text-tw-secondary block max-w-xs rounded',
-        'focus:border-primary-400 focus:ring focus:ring-primary-400 focus:outline-none'
+        'block max-w-xs rounded text-tw-secondary',
+        'focus:border-primary-400 focus:outline-none focus:ring focus:ring-primary-400'
       )}
       onChange={(event) => selectHandler(event)}
     >

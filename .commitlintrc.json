@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "gitmoji"
-  ],
+  "extends": ["gitmoji"],
   "rules": {
     "type-enum": [
       2,
