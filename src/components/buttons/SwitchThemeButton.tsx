@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 type SwitchThemeButtonProps = {
   mode?: string;
-  themeHandler: () => void;
+  themeHandler?: () => void;
   className?: string;
 };
 
@@ -13,9 +13,10 @@ const SwitchThemeButton: React.FC<SwitchThemeButtonProps> = ({
   themeHandler,
   className,
 }) => {
-  const isDarkTheme = mode === 'dark';
+  const Button = themeHandler ? 'button' : 'div';
+  const isDarkMode = mode === 'dark';
   return (
-    <button
+    <Button
       aria-label="Toggle Dark Mode"
       type="button"
       className={cx(
@@ -31,7 +32,7 @@ const SwitchThemeButton: React.FC<SwitchThemeButtonProps> = ({
         stroke="currentColor"
         className="h-6 w-6 text-tw-background"
       >
-        {isDarkTheme ? (
+        {isDarkMode ? (
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -47,7 +48,7 @@ const SwitchThemeButton: React.FC<SwitchThemeButtonProps> = ({
           />
         )}
       </svg>
-    </button>
+    </Button>
   );
 };
 
