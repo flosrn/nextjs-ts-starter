@@ -27,6 +27,7 @@
         "accessibility",
         "translation",
         "text",
+        "build",
         "package",
         "security",
         "move",
