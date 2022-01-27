@@ -22,9 +22,14 @@
     "packages:upgrade": "yarn upgrade-interactive --latest",
     "git:commit": "git add -A && yarn cz",
     "git:push": "git push --follow-tags",
-    "expansion-pack:add": "./expansion-pack.sh"
+    "expansion-pack:add": "./expansion-pack.sh",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "storybook:generate": "yarn plop"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.3",
+    "@heroicons/react": "^1.0.5",
     "classnames": "^2.3.1",
     "next": "^12.0.9",
     "next-themes": "^0.0.15",
@@ -33,9 +38,19 @@
     "react-icons": "^4.3.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.12",
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@next/bundle-analyzer": "^12.0.9",
+    "@storybook/addon-a11y": "^6.4.14",
+    "@storybook/addon-actions": "^6.4.14",
+    "@storybook/addon-essentials": "^6.4.14",
+    "@storybook/addon-links": "^6.4.14",
+    "@storybook/addons": "^6.4.14",
+    "@storybook/builder-webpack5": "^6.4.14",
+    "@storybook/manager-webpack5": "^6.4.14",
+    "@storybook/react": "^6.4.14",
+    "@storybook/theming": "^6.4.14",
     "@svgr/webpack": "^6.2.0",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
@@ -47,10 +62,11 @@
     "@typescript-eslint/parser": "^5.10.1",
     "autoprefixer": "^10.4.2",
     "babel-jest": "^27.4.6",
+    "babel-loader": "^8.2.3",
     "commitizen": "^4.2.4",
     "commitlint-config-gitmoji": "^2.2.5",
     "cz-customizable": "^6.3.0",
-    "eslint": "^8.7.0",
+    "eslint": "8.7.0",
     "eslint-config-next": "^12.0.9",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-typescript": "^3.0.0",
@@ -58,17 +74,22 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-storybook": "^0.5.6",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^7.0.4",
     "identity-obj-proxy": "^3.0.0",
+    "inquirer-fuzzy-path": "^2.3.0",
     "jest": "^27.4.7",
     "lint-staged": "^12.3.2",
     "next-sitemap": "^2.0.7",
+    "plop": "^3.0.5",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.4",
     "react-test-renderer": "^17.0.2",
     "standard-version": "^9.3.2",
+    "storybook-addon-next": "^1.3.1",
+    "storybook-theme-css-vars": "^0.0.4",
     "tailwindcss": "^3.0.17",
     "typescript": "^4.5.5"
   },
@@ -85,5 +106,8 @@
     "src/**/*.{json,css,scss,md}": [
       "prettier -w"
     ]
+  },
+  "resolutions": {
+    "webpack": "^5"
   }
 }

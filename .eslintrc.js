@@ -11,6 +11,7 @@ module.exports = {
     'next/core-web-vitals',
     'typescript',
     'plugin:@typescript-eslint/recommended',
+    'plugin:storybook/recommended',
     'prettier',
   ],
   rules: {
@@ -25,7 +26,6 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     // _document.tsx use render method without `this` keyword
     'class-methods-use-this': 'off',
-
     // #region  //*=========== Unused Import ===========
     '@typescript-eslint/no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 'warn',
@@ -39,7 +39,6 @@ module.exports = {
       },
     ],
     // #endregion  //*======== Unused Import ===========
-
     // #region  //*=========== Import Sort ===========
     'simple-import-sort/exports': 'warn',
     'simple-import-sort/imports': [
@@ -47,24 +46,15 @@ module.exports = {
       {
         groups: [
           // `react` and `next` related packages come first
-          ['^react', '^next'],
-          // Then other packages and react-icons
-          ['^@?\\w', '^react-icons'],
-          // ext library & side effect imports
-          ['^@?\\w', '^\\u0000'],
-          // {s}css files
-          ['^.+\\.s?css$'],
-          // Lib and hooks
-          ['^@/lib', '^@/hooks'],
-          // static data
-          ['^@/data'],
-          // components
-          ['^@/components', '^@/container'],
-          // zustand store
-          ['^@/store'],
-          // Other imports
-          ['^@/'],
-          // relative paths up until 3 level
+          ['^react', '^next'], // Then other packages and react-icons
+          ['^@?\\w', '^react-icons'], // ext library & side effect imports
+          ['^@?\\w', '^\\u0000'], // {s}css files
+          ['^.+\\.s?css$'], // Lib and hooks
+          ['^@/lib', '^@/hooks'], // static data
+          ['^@/data'], // components
+          ['^@/components', '^@/container'], // zustand store
+          ['^@/store'], // Other imports
+          ['^@/'], // relative paths up until 3 level
           [
             '^\\./?$',
             '^\\.(?!/?$)',
@@ -75,13 +65,11 @@ module.exports = {
             '^\\.\\./\\.\\./\\.\\./?$',
             '^\\.\\./\\.\\./\\.\\.(?!/?$)',
           ],
-          ['^@/types'],
-          // other that didnt fit in
+          ['^@/types'], // other that didnt fit in
           ['^'],
         ],
       },
-    ],
-    // #endregion  //*======== Import Sort ===========
+    ], // #endregion  //*======== Import Sort ===========
   },
   globals: {
     React: true,
