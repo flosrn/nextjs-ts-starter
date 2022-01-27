@@ -9,6 +9,7 @@ module.exports = {
     'eslint:recommended',
     'next',
     'next/core-web-vitals',
+    'typescript',
     'plugin:@typescript-eslint/recommended',
     'plugin:storybook/recommended',
     'prettier',

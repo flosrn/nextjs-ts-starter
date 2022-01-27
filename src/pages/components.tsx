@@ -56,7 +56,7 @@ function ComponentsPage() {
                 className="!py-0"
               >
                 Set to {isDarkMode ? 'light' : 'dark'}
-                <SwitchThemeButton mode={mode} themeHandler={handleTheme} />
+                <SwitchThemeButton mode={mode} />
               </Button>
             </div>
 
