@@ -63,7 +63,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.7",
     "lint-staged": "^12.3.3",
-    "next-sitemap": "^2.1.8",
+    "next-sitemap": "^2.1.9",
     "postcss": "^8.4.6",
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.5",
