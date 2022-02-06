@@ -1869,10 +1869,10 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
-"@types/tailwindcss@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@types/tailwindcss/-/tailwindcss-3.0.5.tgz#c92beac1be399be1335aba3cdb8c56e478b8d09e"
-  integrity sha512-PwkiuWKrwyS8bPVtMMzh+WRUPJ/1Hd+QuQhVbp5XHj0XsQNyDE+jKjpmzz4MgoLVtYTuHJz1BvbOWaAVWKIBqw==
+"@types/tailwindcss@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@types/tailwindcss/-/tailwindcss-3.0.7.tgz#28ba83255d9f6371c1e9ee9e98ba3c6daf62588f"
+  integrity sha512-M3DEErH+kbqRPcYg3CFhf0UFJwD1xgOjm9GxJcUZJGO/DZwu1fBknt4ajXCU6BI2wvTeLq9pSam78fcbjDOsCQ==
 
 "@types/testing-library__jest-dom@^5.9.1":
   version "5.14.2"
