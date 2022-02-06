@@ -61,7 +61,7 @@ module.exports = {
           ['^@/data'],
           // components
           ['^@/components', '^@/container'],
-          // zustand store
+          // store
           ['^@/store'],
           // Other imports
           ['^@/'],
