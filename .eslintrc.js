@@ -19,6 +19,7 @@ module.exports = {
     'react/display-name': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'no-param-reassign': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
     // Next.js use his own internal link system
     'jsx-a11y/anchor-is-valid': 'off',
     // _app.tsx uses spread operator and also, react-hook-form
@@ -28,7 +29,7 @@ module.exports = {
 
     // #region  //*=========== Unused Import ===========
     '@typescript-eslint/no-unused-vars': 'off',
-    'unused-imports/no-unused-imports': 'warn',
+    'unused-imports/no-unused-imports': 'off',
     'unused-imports/no-unused-vars': [
       'warn',
       {
@@ -60,7 +61,7 @@ module.exports = {
           ['^@/data'],
           // components
           ['^@/components', '^@/container'],
-          // zustand store
+          // store
           ['^@/store'],
           // Other imports
           ['^@/'],
