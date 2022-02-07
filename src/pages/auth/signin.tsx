@@ -1,5 +1,7 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import { GetServerSideProps } from 'next';
+import Image from 'next/image';
 import { getProviders, signIn, useSession } from 'next-auth/react';
 
 import SignInForms from '@/components/forms/SignInForms';
@@ -16,6 +18,13 @@ export type Provider = {
 type SignInPageProps = {
   providers: Provider[];
 };
+
+export interface SignInResponse {
+  error: string | undefined;
+  status: number;
+  ok: boolean;
+  url: string | null;
+}
 
 export const SignInPage: React.FC<SignInPageProps> = ({ providers }) => {
   const { data: session } = useSession();
@@ -44,23 +53,50 @@ export const SignInPage: React.FC<SignInPageProps> = ({ providers }) => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = await signIn('credentials', {
+    const response = (await signIn('credentials', {
       redirect: false,
       email: values.email,
       password: values.password,
-    });
+    })) as unknown as SignInResponse;
+
     // eslint-disable-next-line no-console
     console.log('response : ', response);
+
+    const { error } = response || {};
+
+    if (error) {
+      toast.error(error);
+    } else {
+      toast.success('Successfully signed in');
+    }
+  };
+
+  const handleProviderSubmit = async (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    provider: string
+  ) => {
+    event.preventDefault();
+    const response = await signIn(provider);
+    // eslint-disable-next-line no-console
+    console.log('response : ', response);
+    //
+    // const { error } = response || {};
+    //
+    // if (error) {
+    //   toast.error(error);
+    // } else {
+    //   toast.success('Successfully signed in');
+    // }
   };
 
   return (
     <Layout>
       <div className="flex h-screen min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img
-            className="mx-auto h-12 w-auto"
+          <Image
             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
             alt="Workflow"
+            className="mx-auto h-12 w-auto"
           />
           <h2 className="mt-6 text-center text-3xl font-extrabold">
             Sign in to your account
@@ -70,6 +106,7 @@ export const SignInPage: React.FC<SignInPageProps> = ({ providers }) => {
           values={values}
           changeHandler={handleChange}
           submitHandler={handleSubmit}
+          submitProviderHandler={handleProviderSubmit}
           providers={providers}
         />
       </div>

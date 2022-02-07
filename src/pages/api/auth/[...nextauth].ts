@@ -19,7 +19,7 @@ export default NextAuth({
         username: { label: 'response', type: 'text', placeholder: 'response' },
         password: { label: 'toto123', type: 'password' },
       },
-      authorize: async (credentials, req) => {
+      authorize: async (credentials) => {
         // Add logic here to look up the user from the credentials supplied
         // const user = {
         //   // username: 'strapiuser',
@@ -41,6 +41,7 @@ export default NextAuth({
           .then((res) => res.json())
           .then((data) => data)
           .catch((error) => {
+            // eslint-disable-next-line no-console
             console.log('error', error);
             return null;
           });
@@ -49,14 +50,21 @@ export default NextAuth({
         const errorMessage = error?.message;
         const errorDetail = error?.details?.errors;
 
+        // eslint-disable-next-line no-console
         console.log('response : ', response);
+        // eslint-disable-next-line no-console
         console.log('error : ', error);
+        // eslint-disable-next-line no-console
         console.log('errorDetail : ', errorDetail);
 
         if (errorMessage) throw new Error(errorMessage);
 
         return response.user;
       },
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
     }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_ID,
@@ -65,10 +73,6 @@ export default NextAuth({
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-    }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -160,6 +164,8 @@ export default NextAuth({
         const data = await response?.json();
 
         if (data.error) {
+          // eslint-disable-next-line no-console
+          console.log('data.error : ', data.error);
           return Promise.reject(data.error);
         }
 
