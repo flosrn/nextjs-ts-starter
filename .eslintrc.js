@@ -1,23 +1,38 @@
 module.exports = {
   env: {
+    es6: true,
     browser: true,
-    es2021: true,
     node: true,
+    jest: true,
   },
-  plugins: ['@typescript-eslint', 'simple-import-sort', 'unused-imports'],
   extends: [
     'eslint:recommended',
     'next',
     'next/core-web-vitals',
+    'prettier',
     'typescript',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
+    'plugin:unicorn/recommended',
   ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'unicorn', 'simple-import-sort'],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
   rules: {
-    'no-unused-vars': 'off',
     'no-console': 'warn',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { vars: 'all', args: 'after-used', ignoreRestSiblings: false },
+    ],
     'react/display-name': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-empty': 'warn',
     'no-param-reassign': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     // Next.js use his own internal link system
@@ -27,19 +42,8 @@ module.exports = {
     // _document.tsx use render method without `this` keyword
     'class-methods-use-this': 'off',
 
-    // #region  //*=========== Unused Import ===========
-    '@typescript-eslint/no-unused-vars': 'off',
-    'unused-imports/no-unused-imports': 'off',
-    'unused-imports/no-unused-vars': [
-      'warn',
-      {
-        vars: 'all',
-        varsIgnorePattern: '^_',
-        args: 'after-used',
-        argsIgnorePattern: '^_',
-      },
-    ],
-    // #endregion  //*======== Unused Import ===========
+    'unicorn/prevent-abbreviations': 'off',
+    'unicorn/filename-case': 'off',
 
     // #region  //*=========== Import Sort ===========
     'simple-import-sort/exports': 'warn',

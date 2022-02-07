@@ -20,7 +20,7 @@
     "postbuild": "next-sitemap",
     "release": "standard-version",
     "packages:upgrade": "yarn upgrade-interactive --latest",
-    "git:commit": "git add -A && yarn cz",
+    "git:commit": "yarn lint:fix && git add -A && yarn cz",
     "git:push": "git push --follow-tags",
     "expansion-pack:add": "./expansion-pack.sh"
   },
@@ -60,7 +60,7 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint-plugin-unicorn": "^40.1.0",
     "husky": "^7.0.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.0",
