@@ -27,7 +27,7 @@ module.exports = {
     'no-console': 'warn',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
-      'error',
+      'warn',
       { vars: 'all', args: 'after-used', ignoreRestSiblings: false },
     ],
     'react/display-name': 'off',
