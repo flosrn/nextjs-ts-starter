@@ -1,12 +1,8 @@
 import NextAuth, { User } from 'next-auth';
-import Auth0Provider from 'next-auth/providers/auth0';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import FacebookProvider from 'next-auth/providers/facebook';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
-import TwitterProvider from 'next-auth/providers/twitter';
-// import AppleProvider from "next-auth/providers/apple"
-// import EmailProvider from "next-auth/providers/email"
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
@@ -39,23 +35,18 @@ export default NextAuth({
           }
         )
           .then((res) => res.json())
-          .then((data) => data)
-          .catch((error) => {
-            // eslint-disable-next-line no-console
-            console.log('error', error);
-            return null;
-          });
+          .then((data) => data);
 
         const error = response?.error;
         const errorMessage = error?.message;
         const errorDetail = error?.details?.errors;
 
         // eslint-disable-next-line no-console
-        console.log('response : ', response);
+        console.log('response :', response);
         // eslint-disable-next-line no-console
-        console.log('error : ', error);
+        console.log('error :', error);
         // eslint-disable-next-line no-console
-        console.log('errorDetail : ', errorDetail);
+        console.log('errorDetail :', errorDetail);
 
         if (errorMessage) throw new Error(errorMessage);
 
@@ -152,7 +143,7 @@ export default NextAuth({
       session.jwt = token.jwt;
       session.user = token.user as User;
 
-      return Promise.resolve(session);
+      return session;
     },
     jwt: async ({ token, user, account }) => {
       const isSignIn = !!user;
@@ -165,8 +156,8 @@ export default NextAuth({
 
         if (data.error) {
           // eslint-disable-next-line no-console
-          console.log('data.error : ', data.error);
-          return Promise.reject(data.error);
+          console.log('data.error :', data.error);
+          throw data.error;
         }
 
         token.jwt = data?.jwt;
@@ -184,7 +175,7 @@ export default NextAuth({
 
       // console.log('token : ', token);
 
-      return Promise.resolve(token);
+      return token;
     },
   },
   // callbacks: {

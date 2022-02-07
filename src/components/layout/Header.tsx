@@ -1,6 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 import ButtonLink from '@/components/links/ButtonLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
@@ -11,8 +10,7 @@ const links = [
 ];
 
 const Header: React.FC = () => {
-  const { data: session, status } = useSession();
-  const loading = status === 'loading';
+  const { data: session } = useSession();
   return (
     <header className="sticky top-0 z-50 bg-tw-background">
       <div className="layout flex h-14 items-center justify-between">

@@ -35,7 +35,7 @@ export const SignInPage: React.FC<SignInPageProps> = ({ providers }) => {
   });
   // const router = useRouter();
   // eslint-disable-next-line no-console
-  console.log('session : ', session);
+  console.log('session :', session);
   // console.log('error : ', error);
   // console.log('router : ', router);
   // const csrfToken = getCsrfToken();
@@ -60,7 +60,7 @@ export const SignInPage: React.FC<SignInPageProps> = ({ providers }) => {
     })) as unknown as SignInResponse;
 
     // eslint-disable-next-line no-console
-    console.log('response : ', response);
+    console.log('response :', response);
 
     const { error } = response || {};
 
@@ -78,7 +78,7 @@ export const SignInPage: React.FC<SignInPageProps> = ({ providers }) => {
     event.preventDefault();
     const response = await signIn(provider);
     // eslint-disable-next-line no-console
-    console.log('response : ', response);
+    console.log('response :', response);
     //
     // const { error } = response || {};
     //

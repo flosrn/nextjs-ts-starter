@@ -1,5 +1,5 @@
 namespace NodeJS {
-  // eslint-disable-next-line unused-imports/no-unused-vars,@typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface ProcessEnv extends NodeJS.ProcessEnv {
     EMAIL_SERVER: string;
     EMAIL_FROM: string;
