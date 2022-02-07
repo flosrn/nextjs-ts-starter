@@ -24,7 +24,7 @@ function ComponentsPage() {
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
+  if (!mounted) return;
 
   const handleTheme = () => {
     setTheme(isDarkMode ? `light ${accentColor}` : `dark ${accentColor}`);
