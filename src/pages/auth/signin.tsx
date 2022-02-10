@@ -6,7 +6,7 @@ import { getProviders, signIn, useSession } from 'next-auth/react';
 import { toast } from 'react-toastify';
 
 import SignInForms from '@/components/forms/SignInForms';
-import Layout from '@/components/layout/Layout';
+import MainLayout from '@/components/layout/MainLayout';
 
 export type Provider = {
   id: 'credentials' | 'google' | 'facebook' | 'github';
@@ -87,7 +87,7 @@ export const SignInPage: React.FC<SignInPageProps> = ({ providers }) => {
   };
 
   return (
-    <Layout>
+    <MainLayout>
       <div className="flex h-screen min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="mt-6 text-center text-3xl font-extrabold">
@@ -102,7 +102,7 @@ export const SignInPage: React.FC<SignInPageProps> = ({ providers }) => {
           providers={providers}
         />
       </div>
-    </Layout>
+    </MainLayout>
   );
 };
 

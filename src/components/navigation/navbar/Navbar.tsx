@@ -24,8 +24,8 @@ const navigation = [
   { name: 'Calendar', href: '#' },
 ];
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
+  { name: 'Your Profile', href: '/user/profile' },
+  { name: 'Settings', href: '/user/settings' },
   { name: 'Sign out', href: '#', onClick: () => signOut() },
 ];
 
@@ -34,7 +34,7 @@ const NavBar = () => {
   const { pathname, asPath } = useRouter();
 
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

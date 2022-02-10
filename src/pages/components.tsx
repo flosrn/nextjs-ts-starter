@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes';
 
 import Button from '@/components/buttons/Button';
 import SwitchThemeButton from '@/components/buttons/SwitchThemeButton';
-import Layout from '@/components/layout/Layout';
+import MainLayout from '@/components/layout/MainLayout';
 import ArrowLink from '@/components/links/ArrowLink';
 import ButtonLink from '@/components/links/ButtonLink';
 import PrimaryLink from '@/components/links/PrimaryLink';
@@ -35,7 +35,7 @@ function ComponentsPage() {
   };
 
   return (
-    <Layout>
+    <MainLayout>
       <Seo
         templateTitle="Components"
         description="Pre-built components with awesome default"
@@ -288,7 +288,7 @@ function ComponentsPage() {
           </div>
         </section>
       </main>
-    </Layout>
+    </MainLayout>
   );
 }
 

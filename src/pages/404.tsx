@@ -2,13 +2,13 @@ import React from 'react';
 
 import { RiAlarmWarningFill } from 'react-icons/ri';
 
-import Layout from '@/components/layout/Layout';
+import MainLayout from '@/components/layout/MainLayout';
 import ArrowLink from '@/components/links/ArrowLink';
 import Seo from '@/components/Seo';
 
 function NotFoundPage() {
   return (
-    <Layout>
+    <MainLayout>
       <Seo templateTitle="Not Found" />
 
       <main>
@@ -25,7 +25,7 @@ function NotFoundPage() {
           </div>
         </section>
       </main>
-    </Layout>
+    </MainLayout>
   );
 }
 
