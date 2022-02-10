@@ -44,6 +44,7 @@ module.exports = {
 
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/filename-case': 'off',
+    'unicorn/no-null': 'off',
 
     // #region  //*=========== Import Sort ===========
     'simple-import-sort/exports': 'warn',
@@ -53,8 +54,8 @@ module.exports = {
         groups: [
           // `react` and `next` related packages come first
           ['^react', '^next'],
-          // Then other packages and react-icons
-          ['^@?\\w', '^react-icons'],
+          // Then other packages and react-toastify & react-icons
+          ['^@?\\w', '^react-toastify', '^react-icons'],
           // ext library & side effect imports
           ['^@?\\w', '^\\u0000'],
           // {s}css files

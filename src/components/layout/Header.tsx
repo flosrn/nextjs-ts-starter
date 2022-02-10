@@ -6,7 +6,7 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 
 const links = [
   { href: '/', label: 'Route 1' },
-  { href: '/', label: 'Route 2' },
+  { href: '/components', label: 'Route 2' },
 ];
 
 const Header: React.FC = () => {

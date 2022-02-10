@@ -5,7 +5,7 @@ import { getProviders, signIn, useSession } from 'next-auth/react';
 
 import { toast } from 'react-toastify';
 
-import SignInForms from '@/components/forms/SignInForms';
+import SignUpForms from '@/components/forms/SignUpForms';
 import Layout from '@/components/layout/Layout';
 
 export type Provider = {
@@ -27,7 +27,7 @@ export interface SignInResponse {
   url: string | null;
 }
 
-export const SignInPage: React.FC<SignInPageProps> = ({ providers }) => {
+export const SignUpPage: React.FC<SignInPageProps> = ({ providers }) => {
   const { data: session } = useSession();
   const { error } = useRouter().query;
   const [values, setValues] = React.useState({
@@ -91,10 +91,10 @@ export const SignInPage: React.FC<SignInPageProps> = ({ providers }) => {
       <div className="flex h-screen min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="mt-6 text-center text-3xl font-extrabold">
-            Sign in to your account
+            Create a new account
           </h2>
         </div>
-        <SignInForms
+        <SignUpForms
           values={values}
           changeHandler={handleChange}
           submitHandler={handleSubmit}
@@ -113,4 +113,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-export default SignInPage;
+export default SignUpPage;

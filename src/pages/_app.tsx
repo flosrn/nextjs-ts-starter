@@ -1,7 +1,8 @@
-import { ToastContainer } from 'react-toastify';
 import { AppProps } from 'next/app';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from 'next-themes';
+
+import { ToastContainer } from 'react-toastify';
 
 import '@/styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         <ToastContainer
           position="bottom-right"
-          autoClose={8000}
+          autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
           rtl={false}

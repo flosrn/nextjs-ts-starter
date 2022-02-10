@@ -20,7 +20,7 @@ const SwitchThemeButton: React.FC<SwitchThemeButtonProps> = ({
       aria-label="Toggle Dark Mode"
       type="button"
       className={cx(
-        'absolute left-2/4 order-2 h-12 w-12 -translate-x-2/4 transform p-3 md:relative md:left-0 md:order-3 lg:transform-none',
+        'absolute relative left-2/4 left-0 order-2 order-3 h-12 w-12 -translate-x-2/4 transform transform-none p-3',
         className
       )}
       onClick={themeHandler}

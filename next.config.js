@@ -24,6 +24,7 @@ module.exports = {
           options: {
             typescript: true,
             icon: true,
+            dimensions: false,
           },
         },
       ],

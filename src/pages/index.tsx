@@ -29,7 +29,7 @@ function HomePage() {
       <main>
         <section>
           <div className="layout flex min-h-screen flex-col items-center justify-center text-center">
-            <Vercel className="text-5xl" />
+            <Vercel className="h-16 w-16 text-5xl" />
             <h1 className="mt-4">
               Next.js + Tailwind CSS + TypeScript Starter
             </h1>

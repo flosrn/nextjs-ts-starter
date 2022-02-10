@@ -104,7 +104,7 @@ export default NextAuth({
   pages: {
     signIn: '/auth/signin', // Displays signin buttons
     // signOut: '/auth/signout', // Displays form with sign out button
-    error: '/auth/signin', // Displays errorError code passed in query string as ?error=
+    // error: '/auth/signin', // Displays errorError code passed in query string as ?error=
     // verifyRequest: '/auth/verify-request', // Used for check email page
     // newUser: null // If set, new users will be directed here on first sign in
   },
@@ -122,9 +122,9 @@ export default NextAuth({
     //   if (user) return true;
     //   return false;
     // },
-    // redirect: async ({ url, baseUrl }) => {
-    //   return Promise.resolve('https://google.com');
-    // },
+    redirect: async ({ url, baseUrl }) => {
+      return '/';
+    },
     // redirect: async ({ url, baseUrl }) => {
     //   console.log('url : ', url);
     //   console.log('baseUrl : ', baseUrl);
