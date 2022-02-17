@@ -29,9 +29,14 @@ const userNavigation = [
   { name: 'Sign out', href: '#', onClick: () => signOut() },
 ];
 
+const fallbackImageBaseUrl =
+  'https://eu.ui-avatars.com/api/?background=random&name=';
+
 const NavBar = () => {
-  const { data: session } = useSession();
   const { pathname, asPath } = useRouter();
+  const { data: session } = useSession();
+
+  console.log('session :', session);
 
   return (
     <Disclosure as="nav" className="">
@@ -120,6 +125,10 @@ const NavBar = () => {
                             <img
                               className="h-8 w-8 rounded-full"
                               src={session.user.image}
+                              onError={({ currentTarget }) => {
+                                currentTarget.onerror = null;
+                                currentTarget.src = `${fallbackImageBaseUrl}${session.user?.name}`;
+                              }}
                               alt=""
                             />
                           )}
