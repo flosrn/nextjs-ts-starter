@@ -20,7 +20,7 @@ const user = {
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Team', href: '/components' },
-  { name: 'Projects', href: '#' },
+  { name: 'Projects', href: '/github' },
   { name: 'Calendar', href: '#' },
 ];
 const userNavigation = [
@@ -35,8 +35,6 @@ const fallbackImageBaseUrl =
 const NavBar = () => {
   const { pathname, asPath } = useRouter();
   const { data: session } = useSession();
-
-  console.log('session :', session);
 
   return (
     <Disclosure as="nav" className="">

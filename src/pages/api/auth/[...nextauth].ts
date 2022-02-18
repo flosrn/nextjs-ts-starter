@@ -142,17 +142,20 @@ export default NextAuth({
     session: async ({ session, token }) => {
       session.jwt = token.jwt;
       session.user = token.user as User;
+      session.accessToken = token.accessToken;
 
       return session;
     },
     jwt: async ({ token, user, account }) => {
       const isSignIn = !!user;
+      let username = '';
 
       if (isSignIn && account?.provider !== 'credentials') {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${account?.provider}/callback?access_token=${account?.access_token}`
         );
         const data = await response?.json();
+        // console.log('data :', data);
 
         if (data.error) {
           // eslint-disable-next-line no-console
@@ -162,18 +165,23 @@ export default NextAuth({
 
         token.jwt = data?.jwt;
         token.id = data?.user?.id;
+        username = data?.user?.username;
       }
 
-      // console.log('user : ', user);
-      // console.log('account : ', account);
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+
+      // console.log('user :', user);
+      // console.log('account :', account);
 
       if (user) {
         //   token.jwt = user.jwt;
         //   token.user = user.user;
-        token.user = user;
+        token.user = { ...user, username };
       }
 
-      // console.log('token : ', token);
+      // console.log('token :', token);
 
       return token;
     },
