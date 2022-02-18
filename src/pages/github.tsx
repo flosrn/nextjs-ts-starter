@@ -8,7 +8,7 @@ interface User extends UserType {
   username: string;
 }
 
-async function getContributions(token, username) {
+async function getContributions(token: string, username: string) {
   const headers = {
     Authorization: `bearer ${token}`,
   };
@@ -40,7 +40,6 @@ async function getContributions(token, username) {
     headers: headers,
   });
   const data = await response.json();
-  console.log('data :', data);
   return data;
 }
 
@@ -48,18 +47,16 @@ export default function GithubPage() {
   const { data: session } = useSession();
 
   useEffect(() => {
-    console.log('session :', session);
-    const token = session?.accessToken;
+    const token = session?.accessToken as string;
     const user = session?.user as User;
     const username = user?.username;
     if (token && username) {
       getContributions(token, username).then((data) => {
+        // eslint-disable-next-line no-console
         console.log(data);
       });
     }
-  }, []);
-  // const data = await getContributions('token', 'MeiK2333');
-  // console.log(data);
+  }, [session]);
 
   return <div>Github</div>;
 }

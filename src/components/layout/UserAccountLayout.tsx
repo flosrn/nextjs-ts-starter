@@ -2,7 +2,6 @@ import React from 'react';
 
 import AsideMenu from '@/components/navigation/asidemenu/AsideMenu';
 
-import Header from './Header';
 import MainLayout from './MainLayout';
 
 const UserAccountLayout: React.FC<{ children: React.ReactNode }> = ({

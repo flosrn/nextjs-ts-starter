@@ -120,6 +120,7 @@ const NavBar = () => {
                         <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                           <span className="sr-only">Open user menu</span>
                           {session.user.image && (
+                            // eslint-disable-next-line @next/next/no-img-element
                             <img
                               className="h-8 w-8 rounded-full"
                               src={session.user.image}
@@ -196,6 +197,7 @@ const NavBar = () => {
             <div className="border-t border-gray-700 pt-4 pb-3">
               <div className="flex items-center px-5 sm:px-6">
                 <div className="flex-shrink-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="h-10 w-10 rounded-full"
                     src={user.imageUrl}

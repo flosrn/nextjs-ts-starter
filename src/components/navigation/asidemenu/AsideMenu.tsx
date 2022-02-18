@@ -57,7 +57,9 @@ type AsideMenuProps = {
 const AsideMenu: React.FC<AsideMenuProps> = ({ className }) => {
   const { pathname, asPath } = useRouter();
   return (
-    <aside className="py-6 sm:px-6 lg:col-span-3 lg:py-0 lg:px-0">
+    <aside
+      className={cx('py-6 sm:px-6 lg:col-span-3 lg:py-0 lg:px-0', className)}
+    >
       <nav className="space-y-1 bg-white shadow sm:overflow-hidden sm:rounded-md">
         {subNavigation.map((item) => {
           const isCurrent = item.href === pathname || item.href === asPath;

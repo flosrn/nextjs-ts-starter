@@ -110,19 +110,14 @@ export default NextAuth({
   },
   callbacks: {
     // signIn: async ({ user, account, profile, email, credentials }) => {
-    //   console.log('user : ', user);
-    //   console.log('account : ', account);
-    //   console.log('profile : ', profile);
-    //   console.log('email : ', email);
-    //   console.log('credentials : ', credentials);
-    //   // return Promise.resolve({ response: 'hello' });
-    //   // Promise.resolve(user);
-    //   // if (!user.data) return user;
-    //   // return 'triririr';
-    //   if (user) return true;
-    //   return false;
+    //   console.log('user :', user);
+    //   console.log('account :', account);
+    //   console.log('profile :', profile);
+    //   console.log('email :', email);
+    //   console.log('credentials :', credentials);
+    //   Promise.resolve(user);
     // },
-    redirect: async ({ url, baseUrl }) => {
+    redirect: async () => {
       return '/';
     },
     // redirect: async ({ url, baseUrl }) => {
@@ -155,7 +150,6 @@ export default NextAuth({
           `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${account?.provider}/callback?access_token=${account?.access_token}`
         );
         const data = await response?.json();
-        // console.log('data :', data);
 
         if (data.error) {
           // eslint-disable-next-line no-console
@@ -171,9 +165,6 @@ export default NextAuth({
       if (account) {
         token.accessToken = account.access_token;
       }
-
-      // console.log('user :', user);
-      // console.log('account :', account);
 
       if (user) {
         //   token.jwt = user.jwt;

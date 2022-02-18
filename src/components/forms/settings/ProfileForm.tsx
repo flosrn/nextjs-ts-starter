@@ -96,6 +96,7 @@ export default function Example() {
                       className="inline-block h-12 w-12 flex-shrink-0 overflow-hidden rounded-full"
                       aria-hidden="true"
                     >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         className="h-full w-full rounded-full"
                         src={user.imageUrl}
@@ -123,6 +124,7 @@ export default function Example() {
                 </div>
 
                 <div className="relative hidden overflow-hidden rounded-full lg:block">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="relative h-40 w-40 rounded-full"
                     src={user.imageUrl}

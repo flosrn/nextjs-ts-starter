@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MainLayout, { getLayout } from '@/components/layout/MainLayout';
+import { getLayout } from '@/components/layout/MainLayout';
 import ArrowLink from '@/components/links/ArrowLink';
 import ButtonLink from '@/components/links/ButtonLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
@@ -23,9 +23,7 @@ import Vercel from '~/svg/Vercel.svg';
 function HomePage() {
   return (
     <>
-      {/* <Seo templateTitle='Home' /> */}
       <Seo />
-
       <section>
         <div className="layout flex min-h-screen flex-col items-center justify-center text-center">
           <Vercel className="h-16 w-16 text-5xl" />
