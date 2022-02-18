@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTheme } from 'next-themes';
 
 import Button from '@/components/buttons/Button';
@@ -14,17 +14,11 @@ import Select from '@/components/select/Select';
 import Seo from '@/components/Seo';
 
 function ComponentsPage() {
-  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
   const mode = theme?.split(' ')[0] || theme;
   const accentColor = theme?.split(' ')[1] || 'blue';
   const isDarkMode = mode === 'dark';
-
-  // When mounted on client, now we can show the UI
-  // useEffect(() => setMounted(true), []);
-  //
-  // if (!mounted) return null;
 
   const handleTheme = () => {
     setTheme(isDarkMode ? `light ${accentColor}` : `dark ${accentColor}`);

@@ -124,6 +124,7 @@ const NavBar = () => {
                               className="h-8 w-8 rounded-full"
                               src={session.user.image}
                               onError={({ currentTarget }) => {
+                                // eslint-disable-next-line unicorn/prefer-add-event-listener
                                 currentTarget.onerror = null;
                                 currentTarget.src = `${fallbackImageBaseUrl}${session.user?.name}`;
                               }}
