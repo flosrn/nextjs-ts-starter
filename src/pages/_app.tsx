@@ -4,10 +4,7 @@ import { AppProps } from 'next/app';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from 'next-themes';
 
-import { ToastContainer } from 'react-toastify';
-
 import '@/styles/globals.css';
-import 'react-toastify/dist/ReactToastify.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
 
@@ -30,17 +27,6 @@ function MyApp({
     <SessionProvider session={session}>
       <ThemeProvider defaultTheme="light" attribute="data-theme">
         {layout}
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          rtl={false}
-          draggable
-          closeOnClick
-          pauseOnFocusLoss
-          pauseOnHover
-        />
       </ThemeProvider>
     </SessionProvider>
   );

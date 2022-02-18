@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { getProviders, signIn, useSession } from 'next-auth/react';
-
-import { toast } from 'react-toastify';
+import { getProviders, signIn } from 'next-auth/react';
 
 import SignUpForms from '@/components/forms/SignUpForms';
 import MainLayout from '@/components/layout/MainLayout';
@@ -28,22 +27,11 @@ export interface SignInResponse {
 }
 
 export const SignUpPage: React.FC<SignInPageProps> = ({ providers }) => {
-  const { data: session } = useSession();
   const { error } = useRouter().query;
   const [values, setValues] = React.useState({
-    email: 'strapi@strapi.com',
-    password: 'test123',
+    email: '',
+    password: '',
   });
-  // const router = useRouter();
-  // eslint-disable-next-line no-console
-  console.log('session :', session);
-  // console.log('error : ', error);
-  // console.log('router : ', router);
-  // const csrfToken = getCsrfToken();
-  // const providers = getProviders();
-  // console.log('csrfToken : ', csrfToken);
-  // console.log('providers : ', providers);
-  // console.log('callbackUrl : ', callbackUrl);
 
   useEffect(() => {
     if (error) {
@@ -65,9 +53,6 @@ export const SignUpPage: React.FC<SignInPageProps> = ({ providers }) => {
       email: values.email,
       password: values.password,
     })) as unknown as SignInResponse;
-
-    // eslint-disable-next-line no-console
-    console.log('response :', response);
 
     const { error } = response || {};
 
@@ -102,6 +87,7 @@ export const SignUpPage: React.FC<SignInPageProps> = ({ providers }) => {
           providers={providers}
         />
       </div>
+      <Toaster position="bottom-right" />
     </MainLayout>
   );
 };
