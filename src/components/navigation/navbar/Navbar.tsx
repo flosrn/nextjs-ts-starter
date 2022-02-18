@@ -20,7 +20,7 @@ const user = {
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Team', href: '/components' },
-  { name: 'Projects', href: '/github' },
+  { name: 'Projects', href: '#' },
   { name: 'Calendar', href: '#' },
 ];
 const userNavigation = [
