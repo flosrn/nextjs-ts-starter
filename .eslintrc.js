@@ -44,6 +44,7 @@ module.exports = {
 
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/filename-case': 'off',
+    'unicorn/no-null': 'off',
 
     // #region  //*=========== Import Sort ===========
     'simple-import-sort/exports': 'warn',
