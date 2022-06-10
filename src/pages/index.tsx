@@ -51,7 +51,6 @@ function HomePage() {
                 alt="Deploy with Vercel"
               />
             </UnstyledLink>
-
             <footer className="absolute bottom-2">
               © {new Date().getFullYear()} By{' '}
               <UnderlineLink href="https://flosrn.com?ref=next-ts-starter">

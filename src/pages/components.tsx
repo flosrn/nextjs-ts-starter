@@ -12,6 +12,7 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import Select from '@/components/select/Select';
 import Seo from '@/components/Seo';
+import Skeleton from '@/components/Skeleton';
 
 function ComponentsPage() {
   const { theme, setTheme } = useTheme();
@@ -277,6 +278,11 @@ function ComponentsPage() {
                   height="180"
                   alt="Icon"
                 />
+              </li>
+              <li className="space-y-2">
+                <h2 className="text-lg md:text-xl">Skeleton</h2>
+                <p className="!mt-1 text-sm">Skeleton with shimmer effect</p>
+                <Skeleton className="h-72 w-72" />
               </li>
             </ol>
           </div>
