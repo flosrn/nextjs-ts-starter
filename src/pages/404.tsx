@@ -9,7 +9,7 @@ import Seo from '@/components/Seo';
 function NotFoundPage() {
   return (
     <Layout>
-      <Seo templateTitle="Not Found" />
+      <Seo title="Not Found" />
 
       <main>
         <section className="bg-white">
