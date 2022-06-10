@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
@@ -11,7 +10,7 @@ function withOpacity(variableName) {
   };
 }
 
-/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
