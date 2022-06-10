@@ -31,7 +31,7 @@ function ComponentsPage() {
   return (
     <Layout>
       <Seo
-        templateTitle="Components"
+        title="Components"
         description="Pre-built components with awesome default"
       />
 

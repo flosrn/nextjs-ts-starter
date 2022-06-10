@@ -7,13 +7,6 @@ import UnderlineLink from '@/components/links/UnderlineLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
 
-/**
- * SVGR Support
- * Caveat: No React Props Type.
- *
- * You can override the next-env if the type is important to you
- * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
- */
 import Vercel from '~/svg/Vercel.svg';
 
 // !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
@@ -23,8 +16,7 @@ import Vercel from '~/svg/Vercel.svg';
 function HomePage() {
   return (
     <Layout>
-      {/* <Seo templateTitle='Home' /> */}
-      <Seo />
+      <Seo title="Home" />
 
       <main>
         <section>
@@ -48,7 +40,7 @@ function HomePage() {
             </ButtonLink>
 
             <UnstyledLink
-              href="https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Ftheodorusclarence%2Fts-nextjs-tailwind-starter"
+              href="https://vercel.com/new/clone?repository-url=https://github.com/flosrn/nextjs-ts-starter"
               className="mt-4"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
