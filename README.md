@@ -21,7 +21,7 @@ This repository is 🔋 battery packed with:
 - ⚛️ **React 17**
 - ✨ **TypeScript** - Never miss/misunderstand an error with best type checking
 - 🍃 **Tailwind CSS 3** — Configured with CSS Variables to extend the **primary** color
-- 🌙 **Dark mode** - Efficient light/dark mode switcher 
+- 🌙 **Dark mode** - Efficient light/dark mode switcher
 - 💎 **Pre-built Components** — Components that will **automatically adapt** with your brand color, [check here for the demo](https://nextjs-ts-starter-flosrn.vercel.app/components)
 - 🃏 **Jest** — Configured for unit testing
 - 📈 **Absolute** Import and Path Alias — Import components using `@/` prefix
@@ -85,7 +85,6 @@ You can easily add expansion such as React Hook Form + Components, Storybook, an
 https://user-images.githubusercontent.com/55318172/146631994-e1cac137-1664-4cfe-950b-a96decc1eaa6.mp4
 
 Check out the [expansion pack repository](https://github.com/flosrn/expansion-pack) for the commands
-
 
 <p>Inspired by <a href="https://github.
 com/theodorusclarence/ts-nextjs-tailwind-starter">ts-nextjs-tailwind-starter
