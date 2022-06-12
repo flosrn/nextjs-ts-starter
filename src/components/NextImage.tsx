@@ -4,11 +4,12 @@ import Image, { ImageProps } from 'next/image';
 import cx from 'classnames';
 
 type NextImageProps = {
+  width: string | number;
   useSkeleton?: boolean;
+  layout?: string;
   imgClassName?: string;
   blurClassName?: string;
   alt: string;
-  width: string | number;
 } & (
   | { width: string | number; height: string | number }
   | { layout: 'fill'; width?: string | number; height?: string | number }
@@ -21,11 +22,12 @@ type NextImageProps = {
  * @param useSkeleton add background with pulse animation, don't use it if image is transparent
  */
 const NextImage: React.FC<NextImageProps> = ({
-  useSkeleton = false,
   src,
+  alt,
   width,
   height,
-  alt,
+  layout = 'intrinsic',
+  useSkeleton = false,
   className,
   imgClassName,
   blurClassName,
@@ -40,17 +42,17 @@ const NextImage: React.FC<NextImageProps> = ({
       className={className}
     >
       <Image
-        className={cx(
-          imgClassName,
-          status === 'loading' && cx('animate-pulse', blurClassName)
-        )}
+        {...rest}
         src={src}
         width={width}
         height={height}
         alt={alt}
+        layout={layout}
         onLoadingComplete={() => setStatus('complete')}
-        layout="responsive"
-        {...rest}
+        className={cx(
+          imgClassName,
+          status === 'loading' && cx('animate-pulse', blurClassName)
+        )}
       />
     </figure>
   );

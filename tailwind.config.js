@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
 function withOpacity(variableName) {
@@ -10,7 +10,7 @@ function withOpacity(variableName) {
   };
 }
 
-/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
@@ -54,9 +54,18 @@ module.exports = {
             filter: 'none',
           },
         },
+        shimmer: {
+          '0%': {
+            backgroundPosition: '-700px 0',
+          },
+          '100%': {
+            backgroundPosition: '700px 0',
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
+        shimmer: 'shimmer 1.3s linear infinite',
       },
     },
   },
