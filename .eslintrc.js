@@ -55,12 +55,10 @@ module.exports = {
         groups: [
           // `react` and `next` related packages come first
           ['^react', '^next'],
-          // Then other packages and react-toastify & react-icons
-          ['^@?\\w', '^react-toastify', '^react-icons'],
+          // Then other packages and react-hot-toast & react-icons
+          ['^@?\\w', '^react-hot-toast', '^react-icons'],
           // ext library & side effect imports
           ['^@?\\w', '^\\u0000'],
-          // {s}css files
-          ['^.+\\.s?css$'],
           // Lib and hooks
           ['^@/lib', '^@/hooks'],
           // static data
@@ -85,6 +83,8 @@ module.exports = {
           ['^@/types'],
           // other that didnt fit in
           ['^'],
+          // {s}css files
+          ['^.+\\.s?css$'],
         ],
       },
     ],

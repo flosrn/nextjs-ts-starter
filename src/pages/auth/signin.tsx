@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { getProviders, signIn } from 'next-auth/react';
+
+import toast, { Toaster } from 'react-hot-toast';
 
 import SignInForms from '@/components/forms/SignInForms';
 import MainLayout from '@/components/layout/MainLayout';

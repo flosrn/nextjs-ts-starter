@@ -24,7 +24,7 @@ export default function ArrowLink<C extends React.ElementType>({
     <Component
       {...rest}
       className={cx(
-        'group gap-[0.25em]',
+        'group gap-[0.25em] dark:text-gray-300',
         direction === 'left' && 'flex-row-reverse',
         className
       )}
