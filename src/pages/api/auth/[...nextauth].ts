@@ -1,69 +1,19 @@
 import NextAuth, { User } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import FacebookProvider from 'next-auth/providers/facebook';
-import GithubProvider from 'next-auth/providers/github';
-import GoogleProvider from 'next-auth/providers/google';
+import DiscordProvider from 'next-auth/providers/discord';
+import TwitterProvider from 'next-auth/providers/twitter';
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers/oauth
   providers: [
-    CredentialsProvider({
-      name: 'Credentials',
-      credentials: {
-        username: { label: 'response', type: 'text', placeholder: 'response' },
-        password: { label: 'toto123', type: 'password' },
-      },
-      authorize: async (credentials) => {
-        // Add logic here to look up the user from the credentials supplied
-        // const user = {
-        //   // username: 'strapiuser',
-        //   email: 'strapi@strapi.com',
-        //   password: 'test123',
-        // };
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              // @ts-ignore
-              identifier: credentials?.email,
-              password: credentials?.password,
-            }),
-          }
-        )
-          .then((res) => res.json())
-          .then((data) => data);
-
-        const error = response?.error;
-        const errorMessage = error?.message;
-        const errorDetail = error?.details?.errors;
-
-        // eslint-disable-next-line no-console
-        console.log('response :', response);
-        // eslint-disable-next-line no-console
-        console.log('error :', error);
-        // eslint-disable-next-line no-console
-        console.log('errorDetail :', errorDetail);
-
-        if (errorMessage) throw new Error(errorMessage);
-
-        return response.user;
-      },
+    DiscordProvider({
+      clientId: process.env.DISCORD_CLIENT_ID,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET,
     }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-    }),
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_ID,
-      clientSecret: process.env.FACEBOOK_SECRET,
-    }),
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+    TwitterProvider({
+      clientId: process.env.TWITTER_ID,
+      clientSecret: process.env.TWITTER_SECRET,
     }),
   ],
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -73,7 +23,7 @@ export default NextAuth({
   // The secret should be set to a reasonably long random string.
   // It is used to sign cookies and to sign and encrypt JSON Web Tokens, unless
   // a separate secret is defined explicitly for encrypting the JWT.
-  secret: process.env.SECRET,
+  secret: process.env.NEXT_PUBLIC_SECRET,
   session: {
     // Use JSON Web Tokens for session instead of database sessions.
     // This option can be used with or without a database for users/accounts.
@@ -93,7 +43,7 @@ export default NextAuth({
   // https://next-auth.js.org/configuration/options#jwt
   jwt: {
     // A secret to use for key generation (you should set this explicitly)
-    secret: process.env.SECRET,
+    secret: process.env.NEXT_PUBLIC_SECRET,
     // Set to true to use encryption (default: false)
     // encryption: true,
     // You can define your own encode/decode functions for signing and encryption
@@ -102,38 +52,33 @@ export default NextAuth({
     // decode: async ({ secret, token, maxAge }) => {},
   },
   pages: {
-    signIn: '/auth/signin', // Displays signin buttons
+    signIn: '/login', // Displays signin buttons
     // signOut: '/auth/signout', // Displays form with sign out button
-    // error: '/auth/signin', // Displays errorError code passed in query string as ?error=
+    // error: '/auth/error', // Displays errorError code passed in query string as ?error=
     // verifyRequest: '/auth/verify-request', // Used for check email page
     // newUser: null // If set, new users will be directed here on first sign in
   },
   callbacks: {
-    // signIn: async ({ user, account, profile, email, credentials }) => {
-    //   console.log('user :', user);
-    //   console.log('account :', account);
-    //   console.log('profile :', profile);
-    //   console.log('email :', email);
-    //   console.log('credentials :', credentials);
-    //   Promise.resolve(user);
-    // },
-    redirect: async () => {
-      return '/';
+    signIn: async ({ profile, account }) => {
+      if (!profile.email) {
+        return `/login?error=NoEmailProvided&provider=${account.provider}`;
+      }
+      return true;
     },
+    // redirect: async () => {
+    //   return '/';
+    // },
     // redirect: async ({ url, baseUrl }) => {
-    //   console.log('url : ', url);
-    //   console.log('baseUrl : ', baseUrl);
+    //   return url;
+    // },
+    // redirect: async ({ url, baseUrl }) => {
+    //   console.log('url :', url);
+    //   console.log('baseUrl :', baseUrl);
     //   // return url.startsWith(baseUrl)
     //   //   ? Promise.resolve(url)
     //   //   : Promise.resolve(baseUrl);
-    //   return Promise.resolve(`${baseUrl}/auth/signin`);
+    //   return `${baseUrl}/contact`;
     // },
-
-    // async session({ session, token, user }) {
-    //   console.log('session : ', session);
-    //   return session;
-    // },
-    // async jwt({ token, user, account, profile, isNewUser }) { return token }
     session: async ({ session, token }) => {
       session.jwt = token.jwt;
       session.user = token.user as User;
@@ -144,45 +89,56 @@ export default NextAuth({
     jwt: async ({ token, user, account }) => {
       const isSignIn = !!user;
       let username = '';
+      let strapiId = 0;
+      let provider: string | undefined = '';
+      const isCredentialsProvider = account?.provider === 'credentials';
 
-      if (isSignIn && account?.provider !== 'credentials') {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${account?.provider}/callback?access_token=${account?.access_token}`
-        );
+      const getUrl = (provider?: RequestInfo | URL): string => {
+        switch (provider) {
+          case 'discord':
+            return `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${account?.provider}/callback?access_token=${account?.access_token}`;
+          case 'twitter':
+            return `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${account?.provider}/callback?oauth_token=${account?.oauth_token}&oauth_token_secret=${account?.oauth_token_secret}`;
+          default:
+            return '';
+        }
+      };
+
+      if (isSignIn && !isCredentialsProvider) {
+        const response = await fetch(getUrl(account?.provider));
+
         const data = await response?.json();
 
-        if (data.error) {
+        if (data?.error) {
           // eslint-disable-next-line no-console
-          console.log('data.error :', data.error);
+          console.error('🚨️ data.error :', data.error);
           throw data.error;
         }
-
         token.jwt = data?.jwt;
-        token.id = data?.user?.id;
         username = data?.user?.username;
+        strapiId = data?.user?.id;
+        provider = account?.provider;
       }
 
       if (account) {
-        token.accessToken = account.access_token;
+        if (account.provider === 'discord') {
+          token.accessToken = account.access_token;
+        } else if (account.provider === 'twitter') {
+          token.accessToken = account.oauth_token;
+        }
       }
 
       if (user) {
-        //   token.jwt = user.jwt;
-        //   token.user = user.user;
-        token.user = { ...user, username };
+        token.user = {
+          ...user,
+          strapiId,
+          username,
+          provider,
+        };
       }
-
-      // console.log('token :', token);
-
       return token;
     },
   },
-  // callbacks: {
-  //   async jwt({ token }) {
-  //     token.userRole = 'admin';
-  //     return token;
-  //   },
-  // },
   theme: {
     colorScheme: 'dark',
   },

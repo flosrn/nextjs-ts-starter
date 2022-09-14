@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 namespace NodeJS {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface ProcessEnv extends NodeJS.ProcessEnv {
@@ -6,6 +7,8 @@ namespace NodeJS {
     APPLE_ID: string;
     APPLE_TEAM_ID: string;
     APPLE_PRIVATE_KEY: string;
+    DISCORD_CLIENT_ID: string;
+    DISCORD_CLIENT_SECRET: string;
     APPLE_KEY_ID: string;
     AUTH0_ID: string;
     AUTH0_SECRET: string;
