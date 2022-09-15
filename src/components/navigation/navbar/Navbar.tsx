@@ -21,6 +21,10 @@ export const navigation: NavItem[] = [
     name: 'About',
     href: '/about',
   },
+  {
+    name: 'Playground',
+    href: '/playground',
+  },
 ];
 
 const Navbar = () => {

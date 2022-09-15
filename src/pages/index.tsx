@@ -3,14 +3,14 @@ import React from 'react';
 import { getLayout } from '@/components/layout/MainLayout';
 import ArrowLink from '@/components/links/ArrowLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import Seo from '@/components/seo/Seo';
+import HomeSeo from '@/components/seo/HomeSeo';
 
 import SvgVercel from '~/svg/vercel.svg';
 
 function HomePage() {
   return (
     <>
-      <Seo title="Home" />
+      <HomeSeo />
       <section>
         <div className="layout flex-center min-h-screen flex-col text-center">
           <SvgVercel className="h-16 w-16 text-5xl" />

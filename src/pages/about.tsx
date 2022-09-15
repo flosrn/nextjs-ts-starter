@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { getLayout } from '@/components/layout/MainLayout';
-import HomeSeo from '@/components/seo/HomeSeo';
+import Seo from '@/components/seo/Seo';
 
 function AboutPage() {
   return (
     <>
-      <HomeSeo />
+      <Seo title="About" />
       <section>
         <div className="layout flex-center min-h-screen flex-col text-center">
           About page

@@ -6,9 +6,9 @@ module.exports = {
 
   reactStrictMode: true,
 
-  // images: {
-  //   domains: ['res.cloudinary.com', 'cdn.discordapp.com'],
-  // },
+  images: {
+    domains: ['raw.githubusercontent.com'],
+  },
 
   webpack(config) {
     config.module.rules.push(
