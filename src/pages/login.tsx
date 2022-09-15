@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import toast from 'react-hot-toast';
 
 import ArrowLink from '@/components/links/ArrowLink';
-import Seo from '@/components/Seo';
+import Seo from '@/components/seo/Seo';
 
 import SvgDiscord from '~/svg/discord.svg';
 import SvgTwitter from '~/svg/twitter.svg';

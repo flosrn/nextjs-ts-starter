@@ -6,6 +6,9 @@ import Document, {
   NextScript,
 } from 'next/document';
 
+// Favicon and manifest generated with https://realfavicongenerator.net
+// and https://seochecker.it/web-app-manifest-generator
+
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);

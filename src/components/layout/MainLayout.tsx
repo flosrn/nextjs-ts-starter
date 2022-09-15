@@ -8,11 +8,11 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <>
       <Navbar />
       {children}
-      <footer className="fixed left-1/2 bottom-2 -translate-x-1/2">
-        © {new Date().getFullYear()}, made with ❤️ and with ☕️ by{' '}
-        <UnderlineLink href="https://flosrn.com?ref=next-ts-starter">
-          Flosrn
-        </UnderlineLink>
+      <footer className="flex-center fixed left-1/2 bottom-2 w-full -translate-x-1/2">
+        <p>
+          © {new Date().getFullYear()}, made with ❤️ and with ☕️ by{' '}
+          <UnderlineLink href="https://github.com/flosrn">flosrn</UnderlineLink>
+        </p>
       </footer>
     </>
   );

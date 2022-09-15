@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 :root {
+  height: 100%;
+  touch-action: pan-x pan-y;
   /* #region  /**=========== Primary Color =========== */
-  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
   --background: theme('colors.white');
   --background-secondary: theme('colors.gray.200');
   --primary: theme('colors.black');
@@ -35,7 +36,7 @@
   /* #endregion  /**======== Primary Color =========== */
 }
 
-[data-theme*='dark'] {
+html.dark {
   --background: theme('colors.black');
   --background-secondary: theme('colors.gray.800');
   --primary: theme('colors.white');
@@ -61,9 +62,35 @@
     margin: 0;
   }
 
+  html {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    user-select: none;
+  }
+
   html,
+  body,
+  #__next {
+    width: 100%;
+  }
+
   body {
-    height: 100%;
+    overflow: hidden;
+  }
+
+  input,
+  textarea,
+  button,
+  select,
+  a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   body {
@@ -162,6 +189,10 @@
   /* Class to adjust with sticky footer */
   .min-h-main {
     @apply min-h-[calc(100vh-56px)];
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
   }
 }
 

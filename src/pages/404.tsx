@@ -4,7 +4,7 @@ import { RiAlarmWarningFill } from 'react-icons/ri';
 
 import MainLayout from '@/components/layout/MainLayout';
 import ArrowLink from '@/components/links/ArrowLink';
-import Seo from '@/components/Seo';
+import Seo from '@/components/seo/Seo';
 
 function NotFoundPage() {
   return (
@@ -12,7 +12,7 @@ function NotFoundPage() {
       <Seo title="Not Found" />
 
       <section>
-        <div className="layout -mt-16 flex min-h-screen flex-col items-center justify-center text-center">
+        <div className="layout flex-center min-h-screen flex-col text-center">
           <RiAlarmWarningFill
             size={60}
             className="drop-shadow-glow animate-flicker text-red-500"
