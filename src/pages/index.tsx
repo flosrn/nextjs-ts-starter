@@ -5,7 +5,7 @@ import ArrowLink from '@/components/links/ArrowLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
 
-import Vercel from '~/svg/Vercel.svg';
+import SvgVercel from '~/svg/vercel.svg';
 
 // !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
 // Before you begin editing, follow all comments with `STARTERCONF`,
@@ -18,7 +18,7 @@ function HomePage() {
 
       <section>
         <div className="layout -mt-16 flex min-h-screen flex-col items-center justify-center text-center">
-          <Vercel className="h-16 w-16 text-5xl" />
+          <SvgVercel className="h-16 w-16 text-5xl" />
           <h1 className="mt-4">Next.js + Tailwind CSS + TypeScript Starter</h1>
           <p className="mt-2 text-sm text-tw-primary-dark">
             A starter for Next.js, Tailwind CSS, and TypeScript with Absolute
