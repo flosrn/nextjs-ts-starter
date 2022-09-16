@@ -1,4 +1,4 @@
-import { Pokemon } from 'pokedex-types';
+import { Pokemon } from 'pokeapi-types';
 import useSWR from 'swr';
 
 import fetcher from '@/lib/fetcher';
@@ -19,5 +19,4 @@ const useGetPokemons = (shouldFetch: boolean) => {
     isError: error,
   };
 };
-
 export default useGetPokemons;

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import axios from 'axios';
-import { NamedAPIResource } from 'pokedex-types';
+import { NamedAPIResource } from 'pokeapi-types';
 
 const POKE_API_URL = 'https://pokeapi.co/api/v2/pokemon';
 

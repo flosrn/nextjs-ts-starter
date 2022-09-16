@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-declare module 'pokedex-types' {
+declare module 'pokeapi-types' {
   namespace PokeAPI {
     interface APIResource {
       /** The URL of the referenced resource. */
