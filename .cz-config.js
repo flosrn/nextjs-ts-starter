@@ -108,18 +108,9 @@ module.exports = {
     },
   ],
 
-  scopeOverrides: {
-    fix: [
-      { name: 'merge' },
-      { name: 'style' },
-      { name: 'test' },
-      { name: 'hotfix' },
-    ],
-  },
-
-  allowCustomScopes: true,
   allowBreakingChanges: ['feat', 'fix'],
   // skip any questions you want
-  skipQuestions: ['body'],
+  skipQuestions: ['body', 'footer'],
   subjectLimit: 100,
+  skipEmptyScopes: true,
 };
