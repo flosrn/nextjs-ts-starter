@@ -1,45 +1,57 @@
 import React from 'react';
 import Image from 'next/future/image';
-import Link from 'next/link';
 
-import { ArrowRightIcon } from '@heroicons/react/24/solid';
-import { Button } from 'flowbite-react';
-import { Pokemon } from 'pokeapi-types';
+import cx from 'classnames';
 
-const PokemonCard = ({ pokemon }: { pokemon: Pokemon }) => {
+import { PokemonCardType } from '@/hooks/api/pokeapi/useGetPokemons';
+
+import pokemonCardBackFace from '../../../public/images/pokemon/pokemon-card-back.png';
+
+const PokemonCard = ({
+  pokemon,
+  cardPair,
+  switchedCards,
+  switchCardHandler,
+}: {
+  pokemon: PokemonCardType;
+  cardPair: PokemonCardType[];
+  switchedCards: PokemonCardType[];
+  switchCardHandler: (pokemon: PokemonCardType) => void;
+}) => {
   return (
     <div
       key={pokemon.id}
-      className="perspective group col-span-12 h-[336px] duration-1000 sm:col-span-6 md:col-span-4 lg:col-span-3"
+      className="perspective col-span-12 h-[336px] cursor-pointer rounded-lg border border-gray-200 shadow-sm duration-1000 hover:shadow-lg sm:col-span-6 md:col-span-4 lg:col-span-3"
     >
-      <div className="flex-center preserve-3d group-hover:my-rotate-y-180 relative w-[200px] max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
-        <div className="my-rotate-y-180 backface-hidden absolute h-full w-full">
+      <div
+        onClick={() => switchCardHandler(pokemon)}
+        className={cx(
+          'flex-center preserve-3d relative h-full w-[200px] max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
+          {
+            'my-rotate-y-180 pointer-events-none cursor-not-allowed':
+              cardPair?.some((card) => card.cardIndex === pokemon.cardIndex) ||
+              switchedCards?.some(
+                (card) => card.cardIndex === pokemon.cardIndex
+              ),
+          }
+        )}
+      >
+        <div className="my-rotate-y-180 backface-hidden flex-center absolute h-full w-full">
           <Image
-            src={pokemon.sprites.other.dream_world.front_default || ''}
+            src={pokemon.image || ''}
             width={150}
             height={150}
-            style={{ maxWidth: '100%', height: '150px' }}
             alt={pokemon.name}
             className="m-5 rounded-t-lg"
           />
         </div>
         <div className="backface-hidden absolute h-full w-full p-5">
-          <a href="#">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {pokemon.name}
-            </h5>
-          </a>
-          <p className="mb-3 text-xs text-gray-700 dark:text-gray-400">
-            Types: {pokemon.types.map((type) => type.type.name).join(', ')}
-          </p>
-          <Link href="/pokemons/[...id]" as={`/pokemons/${pokemon.id}`}>
-            <a>
-              <Button size="sm">
-                Read more
-                <ArrowRightIcon className="ml-2 h-4 w-4" />
-              </Button>
-            </a>
-          </Link>
+          <Image
+            src={pokemonCardBackFace}
+            fill
+            alt={pokemon.name}
+            className="rounded-t-lg"
+          />
         </div>
       </div>
     </div>

@@ -1,4 +1,7 @@
-export default function randomUniqueNum(range: number, outputCount: number) {
+export default function randomUniqueNum(
+  range: number,
+  outputCount: number
+): number[] {
   const arr = [];
   const result = [];
   for (let i = 1; i <= range; i++) {

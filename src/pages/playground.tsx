@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Button } from 'flowbite-react';
 import { Toaster } from 'react-hot-toast';
 
-import useGetPokemons from '@/hooks/api/pokeapi/useGetPokemons';
+import useGetPokemons, {
+  PokemonCardType,
+} from '@/hooks/api/pokeapi/useGetPokemons';
 
 import PokemonCard from '@/components/card/PokemonCard';
 import { getLayout } from '@/components/layout/MainLayout';
 import Seo from '@/components/seo/Seo';
 
 function PlaygroundPage() {
-  const [shouldFetch, setShouldFetch] = useState(false);
+  const [shouldFetch, setShouldFetch] = useState<boolean>(false);
+  const [cardPair, setCardPair] = useState<PokemonCardType[]>([]);
+  const [switchedCards, setSwitchedCards] = useState<PokemonCardType[]>([]);
   const { data } = useGetPokemons(shouldFetch);
+
+  const switchCard = (pokemon: PokemonCardType) =>
+    setCardPair([...cardPair, pokemon]);
+
+  useEffect(() => {
+    if (cardPair.length === 2) {
+      if (cardPair[0].id === cardPair[1].id) {
+        setSwitchedCards((prev) => [...prev, ...cardPair]);
+      }
+      setTimeout(() => {
+        setCardPair([]);
+      }, 700);
+    }
+  }, [cardPair]);
 
   return (
     <>
@@ -21,8 +39,14 @@ function PlaygroundPage() {
           <h1>Playground page</h1>
 
           <div className="mt-8 grid grid-cols-12 gap-3">
-            {data?.map((pokemon) => (
-              <PokemonCard key={pokemon.id} pokemon={pokemon} />
+            {data?.map((pokemon, index) => (
+              <PokemonCard
+                key={index}
+                pokemon={pokemon}
+                cardPair={cardPair}
+                switchedCards={switchedCards}
+                switchCardHandler={switchCard}
+              />
             ))}
           </div>
 
