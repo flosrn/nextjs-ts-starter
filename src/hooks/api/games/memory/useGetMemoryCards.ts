@@ -3,7 +3,7 @@ import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 import useWithToast from '@/hooks/toast/useWithToast';
 
-export type PokemonCardType = {
+export type CardType = {
   cardIndex: number;
   id: number;
   name: string;
@@ -16,10 +16,10 @@ const options = {
   revalidateOnReconnect: false,
 };
 
-const useGetPokemons = (shouldFetch: boolean) => {
+const useGetMemoryCards = (shouldFetch: boolean) => {
   const { data, error } = useWithToast(
-    useSWR<PokemonCardType[]>(
-      shouldFetch ? [`/api/pokeapi/get-pokemons`] : null,
+    useSWR<CardType[]>(
+      shouldFetch ? [`/api/games/memory/get-cards`] : null,
       fetcher,
       options
     ),
@@ -32,4 +32,4 @@ const useGetPokemons = (shouldFetch: boolean) => {
     isError: error,
   };
 };
-export default useGetPokemons;
+export default useGetMemoryCards;

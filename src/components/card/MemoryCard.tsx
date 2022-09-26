@@ -3,53 +3,53 @@ import Image from 'next/future/image';
 
 import cx from 'classnames';
 
-import { PokemonCardType } from '@/hooks/api/pokeapi/useGetPokemons';
+import { CardType } from '@/hooks/api/games/memory/useGetMemoryCards';
 
-import pokemonCardBackFace from '../../../public/images/pokemon/pokemon-card-back.png';
+import cardBackFace from '../../../public/images/pokemon/pokemon-card-back.png';
 
-const PokemonCard = ({
-  pokemon,
+const MemoryCard = ({
+  card,
   cardPair,
   switchedCards,
   switchCardHandler,
 }: {
-  pokemon: PokemonCardType;
-  cardPair: PokemonCardType[];
-  switchedCards: PokemonCardType[];
-  switchCardHandler: (pokemon: PokemonCardType) => void;
+  card: CardType;
+  cardPair: CardType[];
+  switchedCards: CardType[];
+  switchCardHandler: (card: CardType) => void;
 }) => {
   return (
     <div
-      key={pokemon.id}
+      key={card.id}
       className="perspective col-span-12 h-[336px] cursor-pointer rounded-lg border border-gray-200 shadow-sm duration-1000 hover:shadow-lg sm:col-span-6 md:col-span-4 lg:col-span-3"
     >
       <div
-        onClick={() => switchCardHandler(pokemon)}
+        onClick={() => switchCardHandler(card)}
         className={cx(
           'flex-center preserve-3d relative h-full w-[200px] max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
           {
             'my-rotate-y-180 pointer-events-none cursor-not-allowed':
-              cardPair?.some((card) => card.cardIndex === pokemon.cardIndex) ||
-              switchedCards?.some(
-                (card) => card.cardIndex === pokemon.cardIndex
-              ),
+              cardPair?.some((c) => c.cardIndex === card.cardIndex) ||
+              switchedCards?.some((c) => c.cardIndex === card.cardIndex),
           }
         )}
       >
         <div className="my-rotate-y-180 backface-hidden flex-center absolute h-full w-full">
           <Image
-            src={pokemon.image || ''}
+            src={card.image || ''}
             width={150}
             height={150}
-            alt={pokemon.name}
+            alt={card.name}
+            draggable={false}
             className="m-5 rounded-t-lg"
           />
         </div>
         <div className="backface-hidden absolute h-full w-full p-5">
           <Image
-            src={pokemonCardBackFace}
+            src={cardBackFace}
             fill
-            alt={pokemon.name}
+            alt={card.name}
+            draggable={false}
             className="rounded-t-lg"
           />
         </div>
@@ -58,4 +58,4 @@ const PokemonCard = ({
   );
 };
 
-export default PokemonCard;
+export default MemoryCard;
