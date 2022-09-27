@@ -216,4 +216,20 @@ html.dark {
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
   }
+
+  .my-rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
 }

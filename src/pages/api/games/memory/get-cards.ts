@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import axios from 'axios';
-import { NamedAPIResource } from 'pokeapi-types';
+import { NamedAPIResource, Pokemon } from 'pokeapi-types';
+
+import randomUniqueNum from '@/utils/randomUniqueNum';
 
 const POKE_API_URL = 'https://pokeapi.co/api/v2/pokemon';
 
@@ -10,18 +12,28 @@ export async function getPokemon(url: string) {
   return response.data;
 }
 
+const formatData = (pokemons: Pokemon[]) =>
+  pokemons.map((pokemon) => ({
+    id: pokemon.id,
+    name: pokemon.name,
+    image: pokemon.sprites.other.dream_world.front_default,
+  }));
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
     if (req.method === 'GET') {
-      const jsonData = await getPokemon(POKE_API_URL);
-      const promisesArray = await jsonData.results.map(
-        (result: NamedAPIResource) => getPokemon(result.url)
+      const promisesArray: Promise<NamedAPIResource>[] = [];
+      const randomNums = randomUniqueNum(121, 4);
+      randomNums.map((num) =>
+        promisesArray.push(getPokemon(`${POKE_API_URL}/${num}`))
       );
       const results = await Promise.all(promisesArray);
-      res.status(200).json(results);
+      const duplicateResults = [...results, ...results] as unknown as Pokemon[];
+      const formattedData = formatData(duplicateResults);
+      res.status(200).json(formattedData);
     } else {
       res.status(405).json({ statusCode: 405, message: 'Method Not Allowed' });
     }
