@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/future/image';
+import NextImage from 'next/future/image';
 
 import cx from 'classnames';
 
@@ -9,13 +9,11 @@ import cardBackFace from '../../../public/images/pokemon/pokemon-card-back.png';
 
 const MemoryCard = ({
   card,
-  cardPair,
-  switchedCards,
+  isSwitchedCard,
   switchCardHandler,
 }: {
   card: CardType;
-  cardPair: CardType[];
-  switchedCards: CardType[];
+  isSwitchedCard: boolean;
   switchCardHandler: (card: CardType) => void;
 }) => {
   return (
@@ -29,23 +27,26 @@ const MemoryCard = ({
           'flex-center preserve-3d relative h-full w-[200px] max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
           {
             'my-rotate-y-180 pointer-events-none cursor-not-allowed':
-              cardPair?.some((c) => c.cardIndex === card.cardIndex) ||
-              switchedCards?.some((c) => c.cardIndex === card.cardIndex),
+              isSwitchedCard,
           }
         )}
       >
         <div className="my-rotate-y-180 backface-hidden flex-center absolute h-full w-full">
-          <Image
-            src={card.image || ''}
-            width={150}
-            height={150}
-            alt={card.name}
-            draggable={false}
-            className="m-5 rounded-t-lg"
-          />
+          {isSwitchedCard && (
+            <NextImage
+              loading="eager"
+              priority={true}
+              src={card.image || ''}
+              width={150}
+              height={150}
+              alt={card.name}
+              draggable={false}
+              className="m-5 rounded-t-lg"
+            />
+          )}
         </div>
         <div className="backface-hidden absolute h-full w-full p-5">
-          <Image
+          <NextImage
             src={cardBackFace}
             fill
             alt={card.name}
