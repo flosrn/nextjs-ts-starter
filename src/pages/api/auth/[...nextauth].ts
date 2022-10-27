@@ -95,12 +95,15 @@ export default NextAuth({
 
       const getUrl = (provider?: RequestInfo | URL): string => {
         switch (provider) {
-          case 'discord':
+          case 'discord': {
             return `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${account?.provider}/callback?access_token=${account?.access_token}`;
-          case 'twitter':
+          }
+          case 'twitter': {
             return `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${account?.provider}/callback?oauth_token=${account?.oauth_token}&oauth_token_secret=${account?.oauth_token_secret}`;
-          default:
+          }
+          default: {
             return '';
+          }
         }
       };
 
