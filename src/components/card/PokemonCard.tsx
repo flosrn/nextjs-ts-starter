@@ -31,12 +31,10 @@ const PokemonCard = ({ pokemon }: { pokemon: Pokemon }) => {
             Types: {pokemon.types.map((type) => type.type.name).join(', ')}
           </p>
           <Link href="/pokemons/[...id]" as={`/pokemons/${pokemon.id}`}>
-            <a>
-              <Button size="sm">
-                Read more
-                <ArrowRightIcon className="ml-2 h-4 w-4" />
-              </Button>
-            </a>
+            <Button size="sm">
+              Read more
+              <ArrowRightIcon className="ml-2 h-4 w-4" />
+            </Button>
           </Link>
         </div>
       </div>

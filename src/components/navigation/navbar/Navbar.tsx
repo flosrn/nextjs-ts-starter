@@ -31,18 +31,16 @@ const Navbar = () => {
   const { data: session } = useSession();
   return (
     <FlowbiteNavbar fluid rounded border>
-      <Link href="/">
-        <a className="flex items-center">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Demo
-          </span>
-        </a>
+      <Link href="/" className="flex items-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://flowbite.com/docs/images/logo.svg"
+          className="mr-3 h-6 sm:h-9"
+          alt="Flowbite Logo"
+        />
+        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+          Demo
+        </span>
       </Link>
       <div className="flex space-x-3 md:order-2">
         <DarkThemeToggle />
@@ -80,11 +78,9 @@ const Navbar = () => {
           </Dropdown>
         ) : (
           <Link href="/login">
-            <a>
-              <Button>
-                Login <ArrowLongRightIcon className="ml-1 h-4 w-4" />
-              </Button>
-            </a>
+            <Button>
+              Login <ArrowLongRightIcon className="ml-1 h-4 w-4" />
+            </Button>
           </Link>
         )}
         <FlowbiteNavbar.Toggle />
