@@ -6589,10 +6589,10 @@ next-auth@^4.15.0:
     preact-render-to-string "^5.1.19"
     uuid "^8.3.2"
 
-next-seo@^5.9.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.9.0.tgz#1bc68a25677f0459609c587264c5ee90a2a00730"
-  integrity sha512-GsPXIDC9EFoFM6pkigSGMzuD/PelL8TFPlD5rKQCZfwkDNhs0unkW8sOMZ2u4RnEfxb/BBpEjQxtEeYQcgQ8jQ==
+next-seo@^5.13.0:
+  version "5.13.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-5.13.0.tgz#69c0773ce7b641e719173d4f32a9758711d62b6b"
+  integrity sha512-3n6cOjXydxXlrbMIWcU+D6TllKj72C2rg7IdgoxoKOnfC8ah3U0VUIGRApKXK0wi5ME1m+TBq9isAFFbFdbWXQ==
 
 next-sitemap@^3.1.29:
   version "3.1.29"
