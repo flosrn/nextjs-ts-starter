@@ -2,15 +2,13 @@ import type { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { SessionProvider } from 'next-auth/react';
+import { ThemeProvider } from 'next-themes';
 
-import { Flowbite } from 'flowbite-react';
 import { SWRConfig } from 'swr';
 
 import swrConfig from '@/config';
-import theme from '@/theme';
 
 import '@/styles/globals.css';
-import '@/styles/colors.css';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -29,9 +27,9 @@ function MyApp({
 
   return (
     <SessionProvider session={session}>
-      <Flowbite theme={theme}>
+      <ThemeProvider attribute="class">
         <SWRConfig value={swrConfig}>{layout}</SWRConfig>
-      </Flowbite>
+      </ThemeProvider>
     </SessionProvider>
   );
 }

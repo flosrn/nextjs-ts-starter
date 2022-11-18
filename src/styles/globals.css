@@ -5,45 +5,15 @@
 :root {
   height: 100%;
   touch-action: pan-x pan-y;
-  /* #region  /**=========== Primary Color =========== */
-  --background: theme('colors.white');
-  --background-secondary: theme('colors.gray.200');
-  --primary: theme('colors.black');
-  --primary-light: theme('colors.gray.500');
-  --primary-medium: theme('colors.gray.700');
-  --primary-dark: theme('colors.gray.900');
-  --secondary: theme('colors.black');
-  --tw-clr-primary-50: 240, 249, 255;
-  --tw-clr-primary-100: 224, 242, 254;
-  --tw-clr-primary-200: 186, 230, 253;
-  --tw-clr-primary-300: 125, 211, 252;
-  --tw-clr-primary-400: 56, 189, 248;
-  --tw-clr-primary-500: 14, 165, 233;
-  --tw-clr-primary-600: 2, 132, 199;
-  --tw-clr-primary-700: 3, 105, 161;
-  --tw-clr-primary-800: 7, 89, 133;
-  --tw-clr-primary-900: 12, 74, 110;
-  --clr-primary-50: rgb(var(--tw-clr-primary-50)); /* #f0f9ff */
-  --clr-primary-100: rgb(var(--tw-clr-primary-100)); /* #e0f2fe */
-  --clr-primary-200: rgb(var(--tw-clr-primary-200)); /* #bae6fd */
-  --clr-primary-300: rgb(var(--tw-clr-primary-300)); /* #7dd3fc */
-  --clr-primary-400: rgb(var(--tw-clr-primary-400)); /* #38bdf8 */
-  --clr-primary-500: rgb(var(--tw-clr-primary-500)); /* #0ea5e9 */
-  --clr-primary-600: rgb(var(--tw-clr-primary-600)); /* #0284c7 */
-  --clr-primary-700: rgb(var(--tw-clr-primary-700)); /* #0369a1 */
-  --clr-primary-800: rgb(var(--tw-clr-primary-800)); /* #075985 */
-  --clr-primary-900: rgb(var(--tw-clr-primary-900)); /* #0c4a6e */
-  /* #endregion  /**======== Primary Color =========== */
+  --bg-color: theme('colors.white');
+  --card-color: rgb(23, 23, 23);
+  --mouse-x: 0;
+  --mouse-y: 0;
 }
 
 html.dark {
-  --background: theme('colors.black');
-  --background-secondary: theme('colors.gray.800');
-  --primary: theme('colors.white');
-  --primary-light: theme('colors.gray.100');
-  --primary-medium: theme('colors.gray.200');
-  --primary-dark: theme('colors.gray.300');
-  --secondary: theme('colors.black');
+  --bg-color: rgb(6, 6, 6);
+  --card-color: rgb(23, 23, 23);
 }
 
 @layer base {
@@ -216,4 +186,74 @@ html.dark {
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
   }
+}
+
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 916px;
+  width: calc(100% - 20px);
+}
+
+#cards:hover > .card::after {
+  opacity: 1;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  height: 260px;
+  flex-direction: column;
+  position: relative;
+  width: 300px;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card::before,
+.card::after {
+  border-radius: inherit;
+  content: '';
+  height: 100%;
+  left: 0px;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  transition: opacity 500ms;
+  width: 100%;
+}
+
+.card::before {
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.06),
+    transparent 40%
+  );
+  z-index: 3;
+}
+
+.card::after {
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.4),
+    transparent 40%
+  );
+  z-index: 1;
+}
+
+.card > .card-content {
+  background-color: var(--card-color);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  inset: 1px;
+  padding: 10px;
+  position: absolute;
+  z-index: 2;
 }

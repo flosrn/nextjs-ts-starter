@@ -1,16 +1,20 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
+import { useTheme } from 'next-themes';
 
 import { ArrowLongRightIcon } from '@heroicons/react/20/solid';
 import {
   Avatar,
   Button,
-  DarkThemeToggle,
   Dropdown,
   Navbar as FlowbiteNavbar,
 } from 'flowbite-react';
+import useSound from 'use-sound';
 
 import NavbarLink, { NavItem } from './NavbarLink';
+
+import switchSound from '~/sounds/switch-on.mp3';
 
 const fallbackImageBaseUrl =
   'https://eu.ui-avatars.com/api/?background=random&name=';
@@ -22,13 +26,33 @@ export const navigation: NavItem[] = [
     href: '/about',
   },
   {
+    name: 'Portfolio',
+    href: '/portfolio',
+  },
+  {
     name: 'Playground',
     href: '/playground',
   },
 ];
 
 const Navbar = () => {
+  const [mounted, setMounted] = useState(false);
   const { data: session } = useSession();
+  const { theme, setTheme } = useTheme();
+  const [play] = useSound(switchSound);
+  const isDark = theme === 'dark';
+
+  const toggleTheme = () => {
+    setTheme(isDark ? 'light' : 'dark');
+    play();
+  };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <FlowbiteNavbar fluid rounded border>
       <Link href="/" className="flex items-center">
@@ -42,8 +66,28 @@ const Navbar = () => {
           Demo
         </span>
       </Link>
-      <div className="flex space-x-3 md:order-2">
-        <DarkThemeToggle />
+      <div className="flex items-center space-x-3 md:order-2">
+        <div className="ml-1 h-8 cursor-pointer rounded-full bg-zinc-300 ring-zinc-400 transition-all hover:bg-zinc-300 hover:ring-1 dark:bg-zinc-700 dark:ring-white dark:hover:bg-zinc-800">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label="Toggle Dark Mode"
+            className="flex h-8 w-8 items-center justify-center p-2"
+          >
+            <svg
+              fill="currentColor"
+              strokeWidth="0"
+              viewBox="0 0 20 20"
+              className="h-4 w-4 hover:animate-spin"
+            >
+              {isDark ? (
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+              ) : (
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+              )}
+            </svg>
+          </button>
+        </div>
         {session?.user ? (
           <Dropdown
             arrowIcon={false}
