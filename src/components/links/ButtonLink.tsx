@@ -30,21 +30,21 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {...rest}
         className={cx(
           'inline-flex items-center rounded px-4 py-2 font-semibold',
-          'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
+          'focus-visible:ring-primary-500 focus:outline-none focus-visible:ring',
           'shadow-sm',
           'transition-colors duration-75',
           //#region  //*=========== Variants ===========
           [
             variant === 'primary' && [
               'bg-primary-500 text-white',
-              'border border-primary-600',
+              'border-primary-600 border',
               'hover:bg-primary-600 hover:text-white',
               'active:bg-primary-500',
               'disabled:bg-primary-400 disabled:hover:bg-primary-400',
             ],
             variant === 'outline' && [
               'text-primary-500',
-              'border border-primary-500',
+              'border-primary-500 border',
               'disabled:bg-primary-100 hover:bg-primary-50 active:bg-primary-100',
               isDarkBg &&
                 'disabled:bg-gray-800 hover:bg-gray-900 active:bg-gray-800',

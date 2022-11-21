@@ -5,15 +5,23 @@
 :root {
   height: 100%;
   touch-action: pan-x pan-y;
+
   --bg-color: theme('colors.white');
   --card-color: rgb(23, 23, 23);
+  --transparent: rgba(255, 255, 255, 0);
+  --clr-primary-400: #f859ff;
+  --clr-primary-500: #d946ef;
+  --clr-primary-600: #c534df;
+
+  --header-height: theme('height.12');
+
   --mouse-x: 0;
   --mouse-y: 0;
 }
 
 html.dark {
-  --bg-color: rgb(6, 6, 6);
-  --card-color: rgb(23, 23, 23);
+  --bg-color: #05010d;
+  --card-color: rgb(19, 19, 21);
 }
 
 @layer base {
@@ -36,7 +44,6 @@ html.dark {
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    user-select: none;
   }
 
   html,
@@ -47,6 +54,8 @@ html.dark {
 
   body {
     overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
   }
 
   input,
@@ -97,18 +106,6 @@ html.dark {
   #root,
   #__next {
     isolation: isolate;
-  }
-
-  /* inter var - latin */
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: optional;
-    src: url('/fonts/inter-var-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-      U+2215, U+FEFF, U+FFFD;
   }
 
   .cursor-newtab {
@@ -164,12 +161,54 @@ html.dark {
   .flex-center {
     @apply flex items-center justify-center;
   }
+
+  .header:before {
+    backdrop-filter: blur(12px);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black var(--header-height),
+      transparent
+    );
+  }
+
+  .header:before,
+  .header:after {
+    content: '';
+    position: absolute;
+    inset: -1px 0px -50%;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(
+      92.88deg,
+      rgb(69, 94, 181) 9.16%,
+      rgb(86, 67, 204) 43.89%,
+      rgb(103, 63, 215) 64.72%
+    );
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-radial-gradient {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(120, 119, 198, 0.3),
+      var(--transparent)
+    );
+  }
 }
 
 @layer utilities {
   .animated-underline {
     background-image: linear-gradient(#33333300, #33333300),
-      linear-gradient(to right, var(--clr-primary-400), var(--clr-primary-500));
+      linear-gradient(to right, var(--clr-primary-400), var(--clr-primary-600));
     background-size: 100% 2px, 0 2px;
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
@@ -188,27 +227,18 @@ html.dark {
   }
 }
 
-#cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  max-width: 916px;
-  width: calc(100% - 20px);
-}
-
 #cards:hover > .card::after {
   opacity: 1;
 }
 
 .card {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   cursor: pointer;
   display: flex;
   height: 260px;
   flex-direction: column;
   position: relative;
-  width: 300px;
 }
 
 .card:hover::before {

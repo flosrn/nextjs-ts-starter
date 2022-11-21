@@ -7,11 +7,11 @@ function AboutPage() {
   return (
     <>
       <Seo title="About" />
-      <section>
-        <div className="layout flex-center min-h-screen flex-col text-center">
+      <main>
+        <div className="flex-center mb-36 min-h-screen flex-col text-center">
           About page
         </div>
-      </section>
+      </main>
     </>
   );
 }

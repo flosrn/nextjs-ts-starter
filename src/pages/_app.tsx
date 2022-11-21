@@ -4,9 +4,15 @@ import { AppProps } from 'next/app';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from 'next-themes';
 
+import localFont from '@next/font/local';
 import { SWRConfig } from 'swr';
 
 import swrConfig from '@/config';
+
+const SFProDisplayFont = localFont({
+  src: '../../public/fonts/sf-pro-display-medium.woff2',
+  variable: '--font-SFProDisplay',
+});
 
 import '@/styles/globals.css';
 
@@ -28,7 +34,14 @@ function MyApp({
   return (
     <SessionProvider session={session}>
       <ThemeProvider attribute="class">
-        <SWRConfig value={swrConfig}>{layout}</SWRConfig>
+        <SWRConfig value={swrConfig}>
+          <style jsx global>{`
+            html {
+              font-family: ${SFProDisplayFont.style.fontFamily};
+            }
+          `}</style>
+          {layout}
+        </SWRConfig>
       </ThemeProvider>
     </SessionProvider>
   );

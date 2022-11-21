@@ -20,13 +20,6 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link
-            rel="preload"
-            href="/fonts/inter-var-latin.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
             rel="apple-touch-icon"
             sizes="180x180"
             href="/favicon/apple-touch-icon.png"
@@ -52,7 +45,7 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
         </Head>
-        <body className="bg-[var(--bg-color)] dark:text-gray-300">
+        <body className="bg-[var(--bg-color)] dark:text-slate-100">
           <Main />
           <NextScript />
         </body>

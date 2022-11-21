@@ -111,7 +111,7 @@ function LoginPage() {
               <span className="">Login with Twitter</span>
             </button>
 
-            <p className="mt-12 text-sm text-tw-primary-medium">
+            <p className="text-tw-primary-medium mt-12 text-sm">
               <ArrowLink href="/">Back to home page</ArrowLink>
             </p>
 
